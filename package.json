@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"description": "My Remotion video",
 	"scripts": {
-		"start": "remotion preview",
+		"start": "remotion preview --port 3005",
 		"build": "remotion render FirstVideo out/video.mp4",
 		"buildForTestEncoding": "remotion render TestEncoding out/testEncoding.mp4",
 		"buildTransitionSpace": "remotion render TransitionSpace public/video/transition-space-yukkuri.mp4",

@@ -25,7 +25,7 @@ const getBackgroundVideoDuration = (
   const video = currentTalk.backgroundVideo;
 
   if (!video) {
-    return 0;
+    return 1; // Return 1 frame if no background video
   }
 
   let duration = getDurationInFrames(currentTalk);
@@ -49,26 +49,31 @@ export const Talk: React.FC<TalkProps> = ({ voiceConfig, from, meta }) => {
 
   return (
     <>
-      <Sequence durationInFrames={durationInFrames} from={from}>
+      <Sequence durationInFrames={Math.max(1, voiceConfig.audioDurationFrames)} from={from}>
         <SubtitleWithBackground
           subtitle={voiceConfig.textForDisplay || voiceConfig.text}
           speaker={voiceConfig.speaker}
         />
-        {hasAudio &&
-          (voiceConfig.ids && voiceConfig.ids.length > 0 ? (
-            voiceConfig.ids.map((id) => {
-              return (
-                <Audio key={id} src={staticFile(`audio/yukkuri/${id}.wav`)} />
-              );
-            })
-          ) : (
-            <Audio src={staticFile(`audio/yukkuri/${voiceConfig.id}.wav`)} />
-          ))}
       </Sequence>
+
+      {hasAudio &&
+        (voiceConfig.ids && voiceConfig.ids.length > 0 ? (
+          voiceConfig.ids.map((id) => {
+            return (
+              <Sequence key={id} durationInFrames={Math.max(1, voiceConfig.audioDurationFrames)} from={from}>
+                <Audio src={staticFile(`audio/yukkuri/${id}.wav`)} />
+              </Sequence>
+            );
+          })
+        ) : (
+          <Sequence durationInFrames={Math.max(1, voiceConfig.audioDurationFrames)} from={from}>
+            <Audio src={staticFile(`audio/yukkuri/${voiceConfig.id}.wav`)} />
+          </Sequence>
+        ))}
 
       {voiceConfig.image && (
         <Sequence
-          durationInFrames={durationInFrames}
+          durationInFrames={Math.max(1, durationInFrames)}
           from={(from || 0) + (voiceConfig.image.from || 0)}
         >
           <div
@@ -84,7 +89,7 @@ export const Talk: React.FC<TalkProps> = ({ voiceConfig, from, meta }) => {
 
       {voiceConfig.audio && (
         <Sequence
-          durationInFrames={durationInFrames}
+          durationInFrames={Math.max(1, durationInFrames)}
           from={(from || 0) + (voiceConfig.audio.from || 0)}
         >
           <Audio
@@ -97,18 +102,18 @@ export const Talk: React.FC<TalkProps> = ({ voiceConfig, from, meta }) => {
 
       {voiceConfig.seSounds &&
         voiceConfig.seSounds.map((se, index) => (
-          <Sequence key={index} durationInFrames={durationInFrames} from={from || 0}>
+          <Sequence key={index} durationInFrames={Math.max(1, durationInFrames)} from={from || 0}>
             <Audio src={staticFile(se.src)} />
           </Sequence>
         ))}
 
       {voiceConfig.backgroundVideo && (
         <Sequence
-          durationInFrames={getBackgroundVideoDuration(
+          durationInFrames={Math.max(1, getBackgroundVideoDuration(
             voiceConfig,
             meta.talks,
             meta.index
-          )}
+          ))}
           from={(from || 0) + (voiceConfig.backgroundVideo.from || 0)}
         >
           <div
@@ -127,7 +132,7 @@ export const Talk: React.FC<TalkProps> = ({ voiceConfig, from, meta }) => {
       )}
 
       {CustomObject && (
-        <Sequence durationInFrames={durationInFrames} from={from || 0}>
+        <Sequence durationInFrames={Math.max(1, durationInFrames)} from={from || 0}>
           <CustomObject />
         </Sequence>
       )}
