@@ -1,12 +1,14 @@
-import {Composition} from 'remotion';
-import {FirstVideoConfig} from '../transcripts/firstvideo';
-import {FPS} from './constants';
-import {YukkuriVideo} from './YukkuriVideo';
-import {loadFont} from './load-fonts';
-import {TransitionSpace} from './sozai/TransitionSpace';
-import {getTotalVideoFrames} from './utils/getTotalVideoFrames';
+import { loadFont } from './load-fonts';
+import React from 'react';
+import { Composition } from 'remotion';
+import { YukkuriVideo } from './YukkuriVideo';
+import { getTotalVideoFrames } from './utils/getTotalVideoFrames';
+import { FirstVideoConfig } from '../transcripts/firstvideo';
+import { FPS } from './constants';
+import { TransitionSpace } from './sozai/TransitionSpace';
+import { PlaygroundConfig } from '../transcripts/playground';
 
-export const RemotionRoot: React.FC = () => {
+export const Root: React.FC = () => {
   loadFont();
 
   return (
@@ -18,7 +20,7 @@ export const RemotionRoot: React.FC = () => {
         fps={FPS}
         width={1920}
         height={1080}
-        defaultProps={{videoConfig: FirstVideoConfig}}
+        defaultProps={{ videoConfig: FirstVideoConfig }}
       />
       <Composition
         id="TestEncoding"
@@ -41,6 +43,15 @@ export const RemotionRoot: React.FC = () => {
         fps={FPS}
         width={1920}
         height={1080}
+      />
+      <Composition
+        id="Playground"
+        component={YukkuriVideo}
+        durationInFrames={getTotalVideoFrames(PlaygroundConfig)}
+        fps={FPS}
+        width={1920}
+        height={1080}
+        defaultProps={{ videoConfig: PlaygroundConfig }}
       />
     </>
   );

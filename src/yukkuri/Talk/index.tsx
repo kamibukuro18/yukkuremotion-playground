@@ -1,8 +1,8 @@
-import {Audio, Img, OffthreadVideo, Sequence, staticFile} from 'remotion';
-import {CustomObjects} from '../../../transcripts/CustomObjects';
-import {SUBTITLE_HEIGHT_PX, TALK_GAP_FRAMES} from '../../constants';
-import {SubtitleWithBackground} from '../../Subtitle/SubtitleBackground';
-import {VoiceConfig} from '../yukkuriVideoConfig';
+import { Audio, Img, OffthreadVideo, Sequence, staticFile } from 'remotion';
+import { CustomObjects } from '../../../transcripts/CustomObjects';
+import { SUBTITLE_HEIGHT_PX, TALK_GAP_FRAMES } from '../../constants';
+import { SubtitleWithBackground } from '../../Subtitle/SubtitleBackground';
+import { VoiceConfig } from '../yukkuriVideoConfig';
 
 export type TalkProps = {
   voiceConfig: VoiceConfig;
@@ -38,7 +38,7 @@ const getBackgroundVideoDuration = (
   return duration;
 };
 
-export const Talk: React.FC<TalkProps> = ({voiceConfig, from, meta}) => {
+export const Talk: React.FC<TalkProps> = ({ voiceConfig, from, meta }) => {
   const hasAudio = Boolean(voiceConfig.id) || Boolean(voiceConfig.ids);
 
   const CustomObject = voiceConfig.customObjectKey
@@ -95,6 +95,13 @@ export const Talk: React.FC<TalkProps> = ({voiceConfig, from, meta}) => {
         </Sequence>
       )}
 
+      {voiceConfig.seSounds &&
+        voiceConfig.seSounds.map((se, index) => (
+          <Sequence key={index} durationInFrames={durationInFrames} from={from || 0}>
+            <Audio src={staticFile(se.src)} />
+          </Sequence>
+        ))}
+
       {voiceConfig.backgroundVideo && (
         <Sequence
           durationInFrames={getBackgroundVideoDuration(
@@ -113,7 +120,7 @@ export const Talk: React.FC<TalkProps> = ({voiceConfig, from, meta}) => {
             <OffthreadVideo
               muted
               src={staticFile(voiceConfig.backgroundVideo.src)}
-              style={{maxHeight: '100%'}}
+              style={{ maxHeight: '100%' }}
             />
           </div>
         </Sequence>

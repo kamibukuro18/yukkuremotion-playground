@@ -1,11 +1,11 @@
-import {VideoConfig} from '../src/yukkuri/yukkuriVideoConfig';
+import { VideoConfig } from '../src/yukkuri/yukkuriVideoConfig';
 
 export const FirstVideoConfig: VideoConfig = {
   sections: [
     {
       title: 'イントロダクション',
-      bgmSrc: '/audio/bgm/honobono-wartz.wav',
-      backgroundVideo: '/video/cyber-bg.mp4',
+      bgmSrc: '/audio/bgm/2_23_AM_2.mp3',
+      backgroundVideo: '/video/405_640x360.mov',
       afterMovie: '/video/yukkuri-opening.mp4',
       afteMovieDelay: 0,
       fromFramesMap: {
@@ -139,11 +139,11 @@ export const FirstVideoConfig: VideoConfig = {
         },
       ],
       totalFrames: 1595,
-      kuchipakuMap: {frames: [], amplitude: []},
+      kuchipakuMap: { frames: [], amplitude: [] },
       beforeMovieFrames: 0,
       afterMovieFrames: 190,
-      reimuKuchipakuMap: {frames: [0], amplitude: [6]},
-      marisaKuchipakuMap: {frames: [0], amplitude: [5]},
+      reimuKuchipakuMap: { frames: [0], amplitude: [6] },
+      marisaKuchipakuMap: { frames: [0], amplitude: [5] },
     },
     {
       title: 'Remotion の説明',
@@ -194,7 +194,7 @@ export const FirstVideoConfig: VideoConfig = {
           textForDisplay: '今回は Remotion っていう\n技術を使って作っていくぜ',
           speaker: 'marisa',
           id: '7c6602ff8122451abe9339d7b727508d',
-          image: {src: '/image/remotion-logo.png', backgroundColor: '#fff'},
+          image: { src: '/image/remotion-logo.png', backgroundColor: '#fff' },
           audioDurationFrames: 107,
         },
         {
@@ -202,7 +202,7 @@ export const FirstVideoConfig: VideoConfig = {
           face: 'komari',
           speaker: 'reimu',
           id: '58dccc1e4cf14fab8f32b9291edfb19a',
-          image: {src: '/image/remotion-logo.png', backgroundColor: '#fff'},
+          image: { src: '/image/remotion-logo.png', backgroundColor: '#fff' },
           audioDurationFrames: 18,
         },
         {
@@ -211,7 +211,7 @@ export const FirstVideoConfig: VideoConfig = {
             'RemotionはReactっていう技術を\n使って動画を作れるツールなんだ',
           speaker: 'marisa',
           id: '0ef7ed4a6cd74d5b94e235f87ebc5510',
-          image: {src: '/image/remotion-logo.png', backgroundColor: '#fff'},
+          image: { src: '/image/remotion-logo.png', backgroundColor: '#fff' },
           audioDurationFrames: 128,
         },
         {
@@ -245,7 +245,7 @@ export const FirstVideoConfig: VideoConfig = {
             'Reactはすごいざっくりいうと\nWebサイトの見た目の部分を作るための技術だな',
           speaker: 'marisa',
           id: '4aa7d36eb5e74b838e41cab728094c0d',
-          image: {src: '/image/react-logo.png'},
+          image: { src: '/image/react-logo.png' },
           audioDurationFrames: 147,
         },
         {
@@ -254,7 +254,7 @@ export const FirstVideoConfig: VideoConfig = {
             'Web サイトを作るためには HTML や CSS\nJavaScript という技術を使うんだが、',
           speaker: 'marisa',
           id: 'b2277726e4934a5dbb08c2b9772b9517',
-          image: {src: '/image/html_css_javascript.jpeg'},
+          image: { src: '/image/html_css_javascript.jpeg' },
           audioDurationFrames: 173,
         },
         {
@@ -263,14 +263,14 @@ export const FirstVideoConfig: VideoConfig = {
             'React はリッチなサイトを作るときに\nそれらを便利に扱うための技術なんだ',
           speaker: 'marisa',
           id: '9acb0f3e78af42eca6c187ea2090635e',
-          image: {src: '/image/html_css_javascript.jpeg'},
+          image: { src: '/image/html_css_javascript.jpeg' },
           audioDurationFrames: 151,
         },
         {
           text: '私たちの顔もこんな感じで見た目を作ってるぞ',
           speaker: 'marisa',
           id: 'f3ea1323c1e347288596637872300614',
-          image: {src: '/image/react-face-sample.png'},
+          image: { src: '/image/react-face-sample.png' },
           audioDurationFrames: 95,
         },
         {
@@ -278,7 +278,7 @@ export const FirstVideoConfig: VideoConfig = {
           speaker: 'reimu',
           face: 'kirakira',
           id: '4632b2a99b9e41fcb32b784999fa7df9',
-          image: {src: '/image/react-face-sample.png'},
+          image: { src: '/image/react-face-sample.png' },
           audioDurationFrames: 39,
         },
         {
@@ -287,7 +287,7 @@ export const FirstVideoConfig: VideoConfig = {
           face: 'komariKatame',
           mouth: '08',
           id: '783b22496d704fa8af8c57b76d356894',
-          image: {src: '/image/react-face-sample.png'},
+          image: { src: '/image/react-face-sample.png' },
           audioDurationFrames: 56,
         },
         {
@@ -311,7 +311,7 @@ export const FirstVideoConfig: VideoConfig = {
           speaker: 'marisa',
           id: '6be8407a36754be1ac2ee8ce522dff4c',
           audioDurationFrames: 113,
-          image: {src: '/image/remotion-logo.png', backgroundColor: '#fff'},
+          image: { src: '/image/remotion-logo.png', backgroundColor: '#fff' },
         },
         {
           text: 'え、リアクトはウェブサイトを作れるものじゃなかったの？',
@@ -319,7 +319,7 @@ export const FirstVideoConfig: VideoConfig = {
           speaker: 'reimu',
           id: 'bcd40bb7a9f74b1aa38433b88c520b10',
           audioDurationFrames: 92,
-          image: {src: '/image/remotion-logo.png', backgroundColor: '#fff'},
+          image: { src: '/image/remotion-logo.png', backgroundColor: '#fff' },
         },
         {
           text: 'ああ、だからこれが最初に出てきた時はエンジニアたちも驚いてたぜ',
@@ -328,7 +328,7 @@ export const FirstVideoConfig: VideoConfig = {
           speaker: 'marisa',
           id: 'ff5efe36ef9c4e9a908bc73016f1bd2b',
           audioDurationFrames: 130,
-          image: {src: '/image/remotion-logo.png', backgroundColor: '#fff'},
+          image: { src: '/image/remotion-logo.png', backgroundColor: '#fff' },
         },
         {
           text: 'とりあえず例を見せるとこんな感じのコードを書くと',
@@ -336,7 +336,7 @@ export const FirstVideoConfig: VideoConfig = {
           speaker: 'marisa',
           id: 'd9f4727b85a544da9a713395bd3708e8',
           audioDurationFrames: 91,
-          image: {src: '/image/remotion-hello-world.png'},
+          image: { src: '/image/remotion-hello-world.png' },
         },
         {
           text: 'こういう動画が作れるんだ',
@@ -362,14 +362,14 @@ export const FirstVideoConfig: VideoConfig = {
           speaker: 'reimu',
           id: '0b17fe6b56b747dc9c7f43fff7b13132',
           audioDurationFrames: 102,
-          image: {src: '/image/remotion-hello-world.png'},
+          image: { src: '/image/remotion-hello-world.png' },
         },
         {
           text: 'だろ',
           speaker: 'marisa',
           id: '06929cc226424036807ac0a92787f5d8',
           audioDurationFrames: 10,
-          image: {src: '/image/remotion-hello-world.png'},
+          image: { src: '/image/remotion-hello-world.png' },
         },
         {
           text: '...',
@@ -411,10 +411,10 @@ export const FirstVideoConfig: VideoConfig = {
         },
       ],
       totalFrames: 3115,
-      kuchipakuMap: {frames: [], amplitude: []},
+      kuchipakuMap: { frames: [], amplitude: [] },
       beforeMovieFrames: 0,
-      reimuKuchipakuMap: {frames: [0], amplitude: [6]},
-      marisaKuchipakuMap: {frames: [0], amplitude: [5]},
+      reimuKuchipakuMap: { frames: [0], amplitude: [6] },
+      marisaKuchipakuMap: { frames: [0], amplitude: [5] },
       afterMovieFrames: 180,
     },
     {
@@ -489,14 +489,14 @@ export const FirstVideoConfig: VideoConfig = {
           text: 'こんな感じだな',
           speaker: 'marisa',
           id: '75155046f3c047a8b9384d901df5bdfb',
-          image: {src: '/image/jimakuimage.png'},
+          image: { src: '/image/jimakuimage.png' },
           audioDurationFrames: 30,
         },
         {
           text: 'とてもシンプルね。',
           speaker: 'reimu',
           id: '3371d714a5c043d19ae8da2c497238f7',
-          image: {src: '/image/jimakuimage.png'},
+          image: { src: '/image/jimakuimage.png' },
           audioDurationFrames: 30,
         },
         {
@@ -506,7 +506,7 @@ export const FirstVideoConfig: VideoConfig = {
           memoForEditor: 'これを frame によってアニメーションさせるようにする',
           customDuration: 120,
           customObjectKey: 'gunyogunyo',
-          image: {src: '/image/gunyogunyoanimation.png'},
+          image: { src: '/image/gunyogunyoanimation.png' },
           audioDurationFrames: 86,
         },
         {
@@ -515,7 +515,7 @@ export const FirstVideoConfig: VideoConfig = {
           face: 'karukuhiiteru',
           id: 'c48f592196da4492a4768b134394839c',
           customObjectKey: 'gunyogunyo',
-          image: {src: '/image/gunyogunyoanimation.png'},
+          image: { src: '/image/gunyogunyoanimation.png' },
           audioDurationFrames: 33,
         },
         {
@@ -523,7 +523,7 @@ export const FirstVideoConfig: VideoConfig = {
           textForDisplay: 'ここはWebサイトを作るのと\nほとんど感覚変わらないな',
           speaker: 'marisa',
           id: '64e05da52d2042539ec0c3f49391d23e',
-          image: {src: '/image/gunyogunyoanimation.png'},
+          image: { src: '/image/gunyogunyoanimation.png' },
           audioDurationFrames: 107,
         },
         {
@@ -536,14 +536,14 @@ export const FirstVideoConfig: VideoConfig = {
           text: 'こんな感じの設定ファイルに記述しているぜ',
           speaker: 'marisa',
           id: 'd6284949d9a243df821f6f8758131deb',
-          image: {src: '/image/setting-file.png'},
+          image: { src: '/image/setting-file.png' },
           audioDurationFrames: 85,
         },
         {
           text: 'つまりこんな感じで書けば',
           speaker: 'marisa',
           id: 'cdf26e2c2cc3430aabb6d071e38aa442',
-          image: {src: '/image/reimu-talking-setting.png'},
+          image: { src: '/image/reimu-talking-setting.png' },
           audioDurationFrames: 47,
         },
         {
@@ -552,7 +552,7 @@ export const FirstVideoConfig: VideoConfig = {
           face: 'mangaNikkori',
           mouth: '28',
           id: '36c3c23df20c480b814c819ba5bb64db',
-          image: {src: '/image/reimu-talking-setting.png'},
+          image: { src: '/image/reimu-talking-setting.png' },
           audioDurationFrames: 89,
         },
         {
@@ -581,7 +581,7 @@ export const FirstVideoConfig: VideoConfig = {
             'Audioというものがあるからこれで\n音声ファイルのパスを指定するだけだな',
           speaker: 'marisa',
           id: 'b86f6f03c43642aaa7ca815605e2e43e',
-          image: {src: '/image/audio-code-sample.png'},
+          image: { src: '/image/audio-code-sample.png' },
           audioDurationFrames: 131,
         },
         {
@@ -589,8 +589,8 @@ export const FirstVideoConfig: VideoConfig = {
           speaker: 'marisa',
           id: 'f157c99857834dfab7f066cfb578de05',
           customDuration: 160,
-          audio: {src: '/audio/sozai/nikusei.mp3', from: 64, volume: 1.1},
-          image: {src: '/image/audio-code-sample.png'},
+          audio: { src: '/audio/sozai/nikusei.mp3', from: 64, volume: 1.1 },
+          image: { src: '/image/audio-code-sample.png' },
           audioDurationFrames: 40,
         },
         {
@@ -630,7 +630,7 @@ export const FirstVideoConfig: VideoConfig = {
           text: 'と言っても動画もほぼ一緒だ。',
           speaker: 'marisa',
           id: '4ba0cbafefc6453cbc841b5808982217',
-          image: {src: '/image/video-code-sample.png'},
+          image: { src: '/image/video-code-sample.png' },
           audioDurationFrames: 52,
         },
         {
@@ -639,7 +639,7 @@ export const FirstVideoConfig: VideoConfig = {
             'Videoというものがあるから\nこれに動画ファイルのパスを指定するだけだ',
           speaker: 'marisa',
           id: 'bf6d04ca260046a9a0967fc712e9eab2',
-          image: {src: '/image/video-code-sample.png'},
+          image: { src: '/image/video-code-sample.png' },
           audioDurationFrames: 124,
           memoForEditor: '何かしら動画を載せる',
         },
@@ -648,7 +648,7 @@ export const FirstVideoConfig: VideoConfig = {
           textForDisplay: 'こうするとこんな風に表示できるぜ',
           speaker: 'marisa',
           id: 'a098bcc339a94e49b3414d4f824b19b2',
-          backgroundVideo: {src: '/video/cat.MOV', extendTalksCount: 3},
+          backgroundVideo: { src: '/video/cat.MOV', extendTalksCount: 3 },
           audioDurationFrames: 63,
         },
         {
@@ -677,10 +677,10 @@ export const FirstVideoConfig: VideoConfig = {
         },
       ],
       totalFrames: 2823,
-      kuchipakuMap: {frames: [], amplitude: []},
+      kuchipakuMap: { frames: [], amplitude: [] },
       beforeMovieFrames: 0,
-      reimuKuchipakuMap: {frames: [0], amplitude: [6]},
-      marisaKuchipakuMap: {frames: [0], amplitude: [5]},
+      reimuKuchipakuMap: { frames: [0], amplitude: [6] },
+      marisaKuchipakuMap: { frames: [0], amplitude: [5] },
       afterMovieFrames: 157,
     },
     {
@@ -827,14 +827,14 @@ export const FirstVideoConfig: VideoConfig = {
           id: '17b5a359143645e2868643824ebd3f18',
           audioDurationFrames: 80,
           memoForEditor: 'i18nっぽい画像作る',
-          image: {src: '/image/i18n.png'},
+          image: { src: '/image/i18n.png' },
         },
         {
           text: 'なるほど！それはビジネスとかに便利そう！',
           speaker: 'reimu',
           id: 'ac786452107b4a5482ca0315a464d766',
           audioDurationFrames: 74,
-          image: {src: '/image/i18n.png'},
+          image: { src: '/image/i18n.png' },
         },
         {
           text: 'この動画も設定ファイルの日本語を英語に翻訳するだけで英語版動画が完成するぜ',
@@ -843,7 +843,7 @@ export const FirstVideoConfig: VideoConfig = {
           speaker: 'marisa',
           id: '6584f25f36ec45de8d45ca1e721613a6',
           audioDurationFrames: 171,
-          image: {src: '/image/i18n.png'},
+          image: { src: '/image/i18n.png' },
         },
         {
           text: 'まあ私たちは英語が喋れないから他の人工音声ツールを使った方がいいけどな',
@@ -852,7 +852,7 @@ export const FirstVideoConfig: VideoConfig = {
           speaker: 'marisa',
           id: '102476de55084179a677103f67fb781e',
           audioDurationFrames: 161,
-          image: {src: '/image/i18n.png'},
+          image: { src: '/image/i18n.png' },
         },
         {
           text: 'Our English is super horrible',
@@ -861,7 +861,7 @@ export const FirstVideoConfig: VideoConfig = {
           mouth: '28',
           id: '859cdc0dc61e4fbbbe6c27fd8bde6257',
           audioDurationFrames: 106,
-          image: {src: '/image/i18n.png'},
+          image: { src: '/image/i18n.png' },
         },
         {
           text: 'その他にもプログラミングで作れると色々自由度高く繋げられるのが便利だな',
@@ -870,7 +870,7 @@ export const FirstVideoConfig: VideoConfig = {
           speaker: 'marisa',
           id: '57343b65fdda45f8a7887b37c8c15f47',
           audioDurationFrames: 152,
-          backgroundVideo: {src: '/video/programming.mp4', extendTalksCount: 3},
+          backgroundVideo: { src: '/video/programming.mp4', extendTalksCount: 3 },
         },
         {
           text: '例えば今回の動画も文字列から音声も生成しつつ動画も生成している訳だが',
@@ -904,7 +904,7 @@ export const FirstVideoConfig: VideoConfig = {
           speaker: 'marisa',
           id: '9b2f09a3f542456b9b2fa76e1a9ea5a4',
           audioDurationFrames: 81,
-          backgroundVideo: {src: '/video/programmer.mp4', extendTalksCount: 2},
+          backgroundVideo: { src: '/video/programmer.mp4', extendTalksCount: 2 },
         },
         {
           text: '動画制作ツールを一から学ぶよりはプログラミングで作れる方が遥かに簡単だったぜ',
@@ -943,7 +943,7 @@ export const FirstVideoConfig: VideoConfig = {
           speaker: 'marisa',
           id: 'ee42e3faf83c44b8bbbe81a29eb1fc3d',
           audioDurationFrames: 180,
-          backgroundVideo: {src: '/video/study.mp4', extendTalksCount: 2},
+          backgroundVideo: { src: '/video/study.mp4', extendTalksCount: 2 },
         },
         {
           text: 'おそらく動画制作ツールの使い方を学ぶより、プログラミングを一から学ぶ方がハードル高いだろうからな',
@@ -971,7 +971,7 @@ export const FirstVideoConfig: VideoConfig = {
           audioDurationFrames: 129,
           memoForEditor:
             '各種動画を色々並べた画像。エフェクトの動画とか作ってもいいかも',
-          backgroundVideo: {src: '/video/edit-movie.mp4', extendTalksCount: 2},
+          backgroundVideo: { src: '/video/edit-movie.mp4', extendTalksCount: 2 },
         },
         {
           text: 'Remotionの場合全部自作したりライブラリを探す必要があるからちょっと大変だぜ',
@@ -1011,10 +1011,10 @@ export const FirstVideoConfig: VideoConfig = {
         },
       ],
       totalFrames: 4845,
-      kuchipakuMap: {frames: [], amplitude: []},
+      kuchipakuMap: { frames: [], amplitude: [] },
       beforeMovieFrames: 0,
-      reimuKuchipakuMap: {frames: [0], amplitude: [6]},
-      marisaKuchipakuMap: {frames: [0], amplitude: [5]},
+      reimuKuchipakuMap: { frames: [0], amplitude: [6] },
+      marisaKuchipakuMap: { frames: [0], amplitude: [5] },
       afterMovieFrames: 183,
     },
     {
@@ -1143,10 +1143,10 @@ export const FirstVideoConfig: VideoConfig = {
         },
       ],
       totalFrames: 1533,
-      kuchipakuMap: {frames: [], amplitude: []},
+      kuchipakuMap: { frames: [], amplitude: [] },
       beforeMovieFrames: 0,
-      reimuKuchipakuMap: {frames: [0], amplitude: [6]},
-      marisaKuchipakuMap: {frames: [0], amplitude: [5]},
+      reimuKuchipakuMap: { frames: [0], amplitude: [6] },
+      marisaKuchipakuMap: { frames: [0], amplitude: [5] },
       afterMovieFrames: 240,
     },
   ],

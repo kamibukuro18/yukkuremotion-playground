@@ -1,7 +1,7 @@
 import React from 'react';
-import {CustomObjectKeys} from '../../transcripts/CustomObjects';
-import {FACE_TYPE} from './Face/ImagePaths/faceImagePaths';
-import {MouthType} from './Face/ImagePaths/mouthImagePaths';
+import { CustomObjectKeys } from '../../transcripts/CustomObjects';
+import { FACE_TYPE } from './Face/ImagePaths/faceImagePaths';
+import { MouthType } from './Face/ImagePaths/mouthImagePaths';
 
 export const SPEAKER = {
 	reimu: 'reimu',
@@ -50,14 +50,19 @@ export type VoiceConfig = {
 	customDuration?: number;
 	// 特に動画自体には影響のない、動画制作者のためのメモ
 	memoForEditor?: string;
+	seSounds?: { src: string }[];
+	// 次のセリフまでの遅延時間（秒）
+	delayForNextTalkInSeconds?: number;
+	// スライド番号（画像の切り替えに使用）
+	videoIndex?: number;
 };
 
-export type kuchipakuMap = {frames: number[]; amplitude: number[]};
+export type kuchipakuMap = { frames: number[]; amplitude: number[] };
 
 export type VideoConfig = {
 	sections: {
 		title: string;
-		fromFramesMap: {[key in number]: number};
+		fromFramesMap: { [key in number]: number };
 		totalFrames: number;
 		talks: VoiceConfig[];
 		bgmSrc?: string;
