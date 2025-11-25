@@ -1,14 +1,12 @@
 import React from 'react';
 import {SUBTITLE_HEIGHT_PX, zIndex} from '../constants';
-import {SPEAKER_TYPE} from '../yukkuri/yukkuriVideoConfig';
 import {Subtitle} from './Subtitle';
 
 export const SubtitleWithBackground = (props: {
   subtitle: string;
-  speaker: SPEAKER_TYPE;
 }) => (
   <div style={jimakuBackground}>
-    <Subtitle speaker={props.speaker}>{props.subtitle}</Subtitle>
+    <Subtitle>{props.subtitle}</Subtitle>
   </div>
 );
 

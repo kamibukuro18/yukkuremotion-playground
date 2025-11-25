@@ -4,9 +4,7 @@ import { FACE_TYPE } from './Face/ImagePaths/faceImagePaths';
 import { MouthType } from './Face/ImagePaths/mouthImagePaths';
 
 export const SPEAKER = {
-	reimu: 'reimu',
-	marisa: 'marisa',
-	reimuAndMarisa: 'reimuAndMarisa',
+	zundamon: 'zundamon',
 } as const;
 
 export type SPEAKER_TYPE = keyof typeof SPEAKER;
@@ -37,7 +35,6 @@ export type VoiceConfig = {
 	ids?: string[];
 	text: string;
 	textForDisplay?: string;
-	speaker: SPEAKER_TYPE;
 	delayFrames?: number;
 	audioDurationFrames: number;
 	face?: string;

@@ -1,50 +1,46 @@
 import React from 'react';
 import {zIndex} from '../constants';
-import {SPEAKER, SPEAKER_TYPE} from '../yukkuri/yukkuriVideoConfig';
+import {fontFamily} from '@remotion/google-fonts/NotoSansJP';
 
-const subtitle: React.CSSProperties = {
-  fontFamily: 'GenshinGothic',
-  fontSize: 64,
-  fontWeight: '900',
-  lineHeight: 1.28,
-  color: '#fff',
-  WebkitTextStroke: '4px #C90003',
+const baseSubtitleStyle: React.CSSProperties = {
+  fontFamily,
+  fontSize: 60,
+  fontWeight: 'bold',
+  lineHeight: 2.28,
+  letterSpacing: '0.05em',
+  textRendering: 'optimizeLegibility',
   textAlign: 'center',
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   zIndex: zIndex.anyValue,
 };
 
+const strokeSubtitleStyle: React.CSSProperties = {
+  ...baseSubtitleStyle,
+  color: '#fff',
+  WebkitTextStroke: '4px #C90003',
+};
+
+const fillSubtitleStyle: React.CSSProperties = {
+  ...baseSubtitleStyle,
+  color: '#fff',
+};
+
 type Props = {
-  speaker: SPEAKER_TYPE;
   children: React.ReactNode;
 };
 
-const colorBySpeaker = {
-  [SPEAKER.reimu]: '4px #C90003',
-  [SPEAKER.marisa]: '4px #D3BB02',
-  [SPEAKER.reimuAndMarisa]: '4px #EAF103',
-};
-
-export const Subtitle: React.FC<Props> = ({speaker, children}) => {
+export const Subtitle: React.FC<Props> = ({children}) => {
   return (
-    <div style={{position: 'relative'}}>
-      {speaker === 'reimuAndMarisa' && (
-        <p
-          style={{
-            ...subtitle,
-            WebkitTextStroke: `${colorBySpeaker[SPEAKER.reimu]}`,
-            position: 'absolute',
-            top: '2px',
-            width: '100%',
-            left: '-6px',
-            zIndex: 0,
-          }}
-        >
-          {children}
-        </p>
-      )}
-      <p style={{...subtitle, WebkitTextStroke: `${colorBySpeaker[speaker]}`}}>
-        {children}
-      </p>
+    <div style={{position: 'relative', width: '100%', height: '100%'}}>
+      <p style={strokeSubtitleStyle}>{children}</p>
+      <p style={fillSubtitleStyle}>{children}</p>
     </div>
   );
 };

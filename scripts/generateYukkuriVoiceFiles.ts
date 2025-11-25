@@ -99,7 +99,6 @@ function getTextHash(text: string): string {
 
     const voiceConfig: any = {
       text: talk.text,
-      speaker: 'marisa',
       id: audioInfo.id,
       audioDurationFrames: audioInfo.audioDurationFrames,
       seSounds: talk.seSounds,

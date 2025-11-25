@@ -52,7 +52,6 @@ export const Talk: React.FC<TalkProps> = ({ voiceConfig, from, meta }) => {
       <Sequence durationInFrames={Math.max(1, voiceConfig.audioDurationFrames)} from={from}>
         <SubtitleWithBackground
           subtitle={voiceConfig.textForDisplay || voiceConfig.text}
-          speaker={voiceConfig.speaker}
         />
       </Sequence>
 

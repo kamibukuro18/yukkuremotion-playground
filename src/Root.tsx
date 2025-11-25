@@ -1,4 +1,3 @@
-import { loadFont } from './load-fonts';
 import React from 'react';
 import { Composition } from 'remotion';
 import { YukkuriVideo } from './YukkuriVideo';
@@ -9,8 +8,6 @@ import { TransitionSpace } from './sozai/TransitionSpace';
 import { PlaygroundConfig } from '../transcripts/playground';
 
 export const Root: React.FC = () => {
-  loadFont();
-
   return (
     <>
       <Composition

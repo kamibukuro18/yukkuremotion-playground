@@ -56,7 +56,6 @@ export const PlaygroundConfig: VideoConfig = {
       "talks": [
         {
           "text": "これは新しい構成のテストになるようなことをテストしてみただぜ",
-          "speaker": "marisa",
           "id": "36aab0095e894ee696ff6b85fa9edf0c",
           "audioDurationFrames": 147,
           "image": {
@@ -65,7 +64,6 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "スライド番号を指定して画像を切り替えられるんだ",
-          "speaker": "marisa",
           "id": "f75c788f79cb4ff19221c8d1ffc4059a",
           "audioDurationFrames": 115,
           "image": {
@@ -74,7 +72,6 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "SEも再生できるぞ",
-          "speaker": "marisa",
           "id": "d60c886c57c14154ad0f2023cc2504e4",
           "audioDurationFrames": 65,
           "image": {

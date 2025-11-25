@@ -30,11 +30,11 @@ export const YukkuriVideo: React.FC<{
               }
             >
               {section.bgmSrc && (
+                // @ts-ignore
                 <Audio
                   loop
                   src={staticFile(section.bgmSrc)}
-                  // eslint-disable-next-line
-                  volume={section.bgmVolume || 0.32}
+                  volume={Number(section.bgmVolume || 1)}
                 />
               )}
               {section.backgroundVideo && (
@@ -112,7 +112,7 @@ const jimakuBackground: React.CSSProperties = {
   width: '100%',
   height: `${SUBTITLE_HEIGHT_PX}px`,
   bottom: 0,
-  backgroundImage: `url(${staticFile('image/telop/Cyber_telop2_black.png')})`,
+  backgroundImage: `url(${staticFile('image/Cyber_telop2_black.png')})`,
   backgroundPosition: 'center',
   display: 'flex',
   alignItems: 'center',
