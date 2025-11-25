@@ -4,20 +4,22 @@ import {fontFamily} from '@remotion/google-fonts/NotoSansJP';
 
 const baseSubtitleStyle: React.CSSProperties = {
   fontFamily,
-  fontSize: 60,
+  fontSize: 40,
   fontWeight: 'bold',
-  lineHeight: 2.28,
+  lineHeight: 1.5,
   letterSpacing: '0.05em',
   textRendering: 'optimizeLegibility',
-  textAlign: 'center',
+  textAlign: 'left',
   position: 'absolute',
-  top: 0,
-  left: 0,
+  top: -113,
+  left: 20,
   width: '100%',
   height: '100%',
   display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
+  alignItems: 'flex-start',
+  justifyContent: 'flex-start',
+  paddingTop: '8px',
+  paddingLeft: '45px',
   zIndex: zIndex.anyValue,
 };
 
@@ -33,14 +35,14 @@ const fillSubtitleStyle: React.CSSProperties = {
 };
 
 type Props = {
-  children: React.ReactNode;
+  children: string;
 };
 
 export const Subtitle: React.FC<Props> = ({children}) => {
   return (
     <div style={{position: 'relative', width: '100%', height: '100%'}}>
-      <p style={strokeSubtitleStyle}>{children}</p>
-      <p style={fillSubtitleStyle}>{children}</p>
+      <p style={strokeSubtitleStyle} dangerouslySetInnerHTML={{ __html: children }}></p>
+      <p style={fillSubtitleStyle} dangerouslySetInnerHTML={{ __html: children }}></p>
     </div>
   );
 };

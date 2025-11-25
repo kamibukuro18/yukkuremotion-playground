@@ -12,7 +12,12 @@ export const YukkuriVideo: React.FC<{
   videoConfig: VideoConfig;
 }> = ({videoConfig}) => {
   return (
-    <AbsoluteFill style={{backgroundColor: '#000'}}>
+    <AbsoluteFill style={{
+      backgroundColor: '#000',
+      backgroundImage: `url(${staticFile('image/background.png')})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    }}>
       {videoConfig.sections.map((section, index) => {
         const cumulateFrames = getTotalFramesBeforeSection(videoConfig, index);
 
@@ -109,9 +114,10 @@ export const YukkuriVideo: React.FC<{
 
 const jimakuBackground: React.CSSProperties = {
   position: 'absolute',
-  width: '100%',
-  height: `${SUBTITLE_HEIGHT_PX}px`,
-  bottom: 0,
+  width: 'calc(75%)',
+  height: `130px`,
+  bottom: 20,
+  left: 40,
   backgroundImage: `url(${staticFile('image/Cyber_telop2_black.png')})`,
   backgroundPosition: 'center',
   display: 'flex',

@@ -11,26 +11,18 @@ export type Props = {
 export const YukkuriSequence: React.FC<Props> = () => {
   return (
     <Sequence>
-      <div style={reimuStyle}>
+      <div style={characterStyle}>
         <YukkuriFace isReimu />
-      </div>
-      <div style={marisaStyle}>
-        <YukkuriFace isReimu={false} />
       </div>
     </Sequence>
   );
 };
 
-const reimuStyle: React.CSSProperties = {
+const characterStyle: React.CSSProperties = {
   position: 'absolute',
   right: '10px',
-  bottom: '180px',
-  zIndex: zIndex.yukkuri,
-};
-
-const marisaStyle: React.CSSProperties = {
-  position: 'absolute',
-  left: '-5px',
-  bottom: '180px',
+  bottom: '10px',
+  height: '90%',
+  width: 'auto',
   zIndex: zIndex.yukkuri,
 };

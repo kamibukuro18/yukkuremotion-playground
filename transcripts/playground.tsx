@@ -19,7 +19,7 @@ export const PLAYGROUND_SETTINGS = {
 
 export const PLAYGROUND_TALKS: SimpleTalk[] = [
   {
-    text: 'これは新しい構成のテストになるようなことをテストしてみただぜ',
+    text: 'これは新しい構成のテストになるようなことをテストしてみただぜになるようなことをテストしてみただぜ',
     delayForNextTalkInSeconds: 0.5,
     videoIndex: 0,
   },
@@ -50,14 +50,14 @@ export const PlaygroundConfig: VideoConfig = {
       "bgmVolume": 1,
       "fromFramesMap": {
         "0": 30,
-        "1": 192,
-        "2": 322
+        "1": 262,
+        "2": 392
       },
       "talks": [
         {
-          "text": "これは新しい構成のテストになるようなことをテストしてみただぜ",
-          "id": "36aab0095e894ee696ff6b85fa9edf0c",
-          "audioDurationFrames": 147,
+          "text": "これは新しい構成のテストになるようなことをテストしてみただぜになるようなことをテストしてみただぜ",
+          "id": "98106ebbce384d60bb62ed3878f09d7a",
+          "audioDurationFrames": 217,
           "image": {
             "src": "/image/remotion-logo.png"
           }
@@ -79,7 +79,7 @@ export const PlaygroundConfig: VideoConfig = {
           }
         }
       ],
-      "totalFrames": 477,
+      "totalFrames": 547,
       "kuchipakuMap": {
         "frames": [],
         "amplitude": []

@@ -1,8 +1,9 @@
 import { Audio, Img, OffthreadVideo, Sequence, staticFile } from 'remotion';
 import { CustomObjects } from '../../../transcripts/CustomObjects';
-import { SUBTITLE_HEIGHT_PX, TALK_GAP_FRAMES } from '../../constants';
+import { CHARACTER_WIDTH_PERCENTAGE, SUBTITLE_HEIGHT_PX, TALK_GAP_FRAMES } from '../../constants';
 import { SubtitleWithBackground } from '../../Subtitle/SubtitleBackground';
 import { VoiceConfig } from '../yukkuriVideoConfig';
+import { insertLineBreaks } from '../../utils/textUtils';
 
 export type TalkProps = {
   voiceConfig: VoiceConfig;
@@ -47,11 +48,13 @@ export const Talk: React.FC<TalkProps> = ({ voiceConfig, from, meta }) => {
 
   const durationInFrames = getDurationInFrames(voiceConfig);
 
+  const subtitleText = insertLineBreaks(voiceConfig.textForDisplay || voiceConfig.text, 67); // ここで自動改行を適用
+
   return (
     <>
       <Sequence durationInFrames={Math.max(1, voiceConfig.audioDurationFrames)} from={from}>
         <SubtitleWithBackground
-          subtitle={voiceConfig.textForDisplay || voiceConfig.text}
+          subtitle={subtitleText}
         />
       </Sequence>
 
@@ -60,12 +63,14 @@ export const Talk: React.FC<TalkProps> = ({ voiceConfig, from, meta }) => {
           voiceConfig.ids.map((id) => {
             return (
               <Sequence key={id} durationInFrames={Math.max(1, voiceConfig.audioDurationFrames)} from={from}>
+                {/* @ts-ignore */}
                 <Audio src={staticFile(`audio/yukkuri/${id}.wav`)} />
               </Sequence>
             );
           })
         ) : (
           <Sequence durationInFrames={Math.max(1, voiceConfig.audioDurationFrames)} from={from}>
+            {/* @ts-ignore */}
             <Audio src={staticFile(`audio/yukkuri/${voiceConfig.id}.wav`)} />
           </Sequence>
         ))}
@@ -91,6 +96,7 @@ export const Talk: React.FC<TalkProps> = ({ voiceConfig, from, meta }) => {
           durationInFrames={Math.max(1, durationInFrames)}
           from={(from || 0) + (voiceConfig.audio.from || 0)}
         >
+          {/* @ts-ignore */}
           <Audio
             src={staticFile(voiceConfig.audio.src)}
             // eslint-disable-next-line
@@ -102,6 +108,7 @@ export const Talk: React.FC<TalkProps> = ({ voiceConfig, from, meta }) => {
       {voiceConfig.seSounds &&
         voiceConfig.seSounds.map((se, index) => (
           <Sequence key={index} durationInFrames={Math.max(1, durationInFrames)} from={from || 0}>
+            {/* @ts-ignore */}
             <Audio src={staticFile(se.src)} />
           </Sequence>
         ))}
@@ -139,15 +146,15 @@ export const Talk: React.FC<TalkProps> = ({ voiceConfig, from, meta }) => {
   );
 };
 
-const VERTICAL_PADDING_PX = 40;
-const HORIZONTAL_PADDING_PX = 320;
+const VERTICAL_PADDING_PX = 0;
+const HORIZONTAL_PADDING_PX = 40;
 
 const imagePosition: React.CSSProperties = {
   position: 'absolute',
   height: `calc(100% - ${SUBTITLE_HEIGHT_PX}px - ${VERTICAL_PADDING_PX * 2}px)`,
   top: VERTICAL_PADDING_PX,
   left: HORIZONTAL_PADDING_PX,
-  width: `calc(100% - ${HORIZONTAL_PADDING_PX * 2}px)`,
+  width: `calc(${100 - CHARACTER_WIDTH_PERCENTAGE * 100}% - ${HORIZONTAL_PADDING_PX * 2}px)`,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
