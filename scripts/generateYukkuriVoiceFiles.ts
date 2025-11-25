@@ -74,15 +74,16 @@ function getTextHash(text: string): string {
   fs.writeFileSync(AUDIO_CACHE_PATH, JSON.stringify(audioCache, null, 2));
 
   // Generate VideoConfig
-  const BG_IMAGES = [
-    '/image/remotion-logo.png',
-    '/image/react-logo.png',
-    '/image/html_css_javascript.jpeg',
-    '/image/react-face-sample.png',
-    '/image/jimakuimage.png',
-    '/image/gunyogunyoanimation.png',
-    '/image/setting-file.png',
-  ];
+  // BG_IMAGES配列を削除し、動的にスライド画像を読み込むように変更
+  // const BG_IMAGES = [
+  //   '/image/remotion-logo.png',
+  //   '/image/react-logo.png',
+  //   '/image/html_css_javascript.jpeg',
+  //   '/image/react-face-sample.png',
+  //   '/image/jimakuimage.png',
+  //   '/image/gunyogunyoanimation.png',
+  //   '/image/setting-file.png',
+  // ];
 
   const voiceConfigs: any[] = [];
   const fromFramesMap: { [key: number]: number } = {};
@@ -105,8 +106,8 @@ function getTextHash(text: string): string {
     };
 
     if (talk.videoIndex !== undefined) {
-      const imageIndex = talk.videoIndex % BG_IMAGES.length;
-      voiceConfig.image = { src: BG_IMAGES[imageIndex] };
+      const slideImagePath = `/slides/slide_${talk.videoIndex}.png`; // 動的にスライド画像を読み込む
+      voiceConfig.image = { src: slideImagePath };
     }
 
     voiceConfigs.push(voiceConfig);

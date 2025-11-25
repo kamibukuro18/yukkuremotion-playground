@@ -59,7 +59,7 @@ export const PlaygroundConfig: VideoConfig = {
           "id": "98106ebbce384d60bb62ed3878f09d7a",
           "audioDurationFrames": 217,
           "image": {
-            "src": "/image/remotion-logo.png"
+            "src": "/slides/slide_0.png"
           }
         },
         {
@@ -67,7 +67,7 @@ export const PlaygroundConfig: VideoConfig = {
           "id": "f75c788f79cb4ff19221c8d1ffc4059a",
           "audioDurationFrames": 115,
           "image": {
-            "src": "/image/react-logo.png"
+            "src": "/slides/slide_1.png"
           }
         },
         {
@@ -75,7 +75,7 @@ export const PlaygroundConfig: VideoConfig = {
           "id": "d60c886c57c14154ad0f2023cc2504e4",
           "audioDurationFrames": 65,
           "image": {
-            "src": "/image/html_css_javascript.jpeg"
+            "src": "/slides/slide_2.png"
           }
         }
       ],
