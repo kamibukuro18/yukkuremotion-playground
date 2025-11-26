@@ -49,9 +49,9 @@ export const YukkuriSequence: React.FC<Props> = ({talks, fromFramesMap, videoCon
 
 const characterStyle: React.CSSProperties = {
   position: 'absolute',
-  right: '0px', // 右端に配置
-  bottom: '10px',
-  height: '90%',
-  width: 'auto', // 幅を自動調整
+  right: '-23%', // 右端から30%はみ出すように調整
+  bottom: '-750px',
+  height: 'auto', // 高さを自動調整
+  width: '67%', // 幅を画面の40%に設定
   zIndex: zIndex.yukkuri,
 };
