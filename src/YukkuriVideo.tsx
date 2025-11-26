@@ -69,7 +69,7 @@ export const YukkuriVideo: React.FC<{
               totalFrames={cumulateFrames + section.totalFrames}
             />
 
-            <YukkuriSequence {...section} fromFramesMap={fromFrameMap} />
+            <YukkuriSequence {...section} fromFramesMap={fromFrameMap} videoConfig={videoConfig} />
 
             {section.beforeMovie && (
               <Sequence
@@ -103,9 +103,9 @@ export const YukkuriVideo: React.FC<{
         );
       })}
 
-      <div style={logoStyle}>
+      {/* <div style={logoStyle}>
         <Img src={staticFile('image/yukkurilogo.png')} />
-      </div>
+      </div> */}
 
       <div style={jimakuBackground} />
     </AbsoluteFill>

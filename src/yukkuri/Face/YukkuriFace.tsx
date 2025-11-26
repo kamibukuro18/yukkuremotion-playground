@@ -1,298 +1,137 @@
-import {useEffect, useMemo, useState, memo} from 'react';
+import {useEffect, useMemo, useState} from 'react';
 import {
-  Easing,
   Img,
-  interpolate,
   staticFile,
   useCurrentFrame,
   useVideoConfig,
 } from 'remotion';
-import {
-  MarisaFaceByFrame,
-  ReimuFaceByFrame,
-} from '../../../transcripts/FaceByFrame';
-import {
-  MarisaMouthByFrame,
-  ReimuMouthByFrame,
-} from '../../../transcripts/MouthByFrame';
 import {FPS, zIndex} from '../../constants';
-import {kuchipakuMap} from '../yukkuriVideoConfig';
 
-export type MOUTH_TYPE = 'OPEN' | 'CLOSE';
-
-export type TalkInterval = {
-  start: number;
-  end: number;
+export type CharacterProps = {
+  isTalking?: boolean; // isTalkingプロパティを追加
 };
 
-export type KuchipakuMap = {
-  frames: number[];
-  imageIndexes: number[];
-};
+// const DEFAULT_CHARACTER_SIZE_PX = 320; // YukkuriSequenceで制御するため削除
 
-// FIXME: face を string literal type にする
-export type ReimuProps = {
-  face?: string;
-  isEyeOpen?: boolean;
-  isMouthOpen?: boolean;
-  sizePx?: number;
-  isKuchipaku?: boolean;
-  isReimu?: boolean;
-  mouth?: MOUTH_TYPE;
-};
+// ふわふわアニメーション関連の定数を削除
+// const FuyoFuyoInterval = 40;
+// const FuyoFuyoRange = 2;
 
-const DEFAULT_REIMU_SIZE_PX = 320;
+// ふわふわアニメーション関連の関数を削除
+// function addFuyoFuyoRange(intervals: number[]) {
+//   if (intervals.length === 0) {
+//     intervals.push(FuyoFuyoRange);
+//     return;
+//   }
 
-const FuyoFuyoInterval = 40;
-const FuyoFuyoRange = 2;
+//   if (intervals[intervals.length - 1] === FuyoFuyoRange) {
+//     intervals.push(-FuyoFuyoRange);
+//   } else {
+//     intervals.push(FuyoFuyoRange);
+//   }
+// }
 
-function addFuyoFuyoRange(intervals: number[]) {
-  if (intervals.length === 0) {
-    intervals.push(FuyoFuyoRange);
-    return;
-  }
+// function getFuyoFuyoFrames(videoFrames: number) {
+//   const frames: number[] = [0]; // isReimu の考慮を削除
+//   const intervals: number[] = [FuyoFuyoRange];
 
-  if (intervals[intervals.length - 1] === FuyoFuyoRange) {
-    intervals.push(-FuyoFuyoRange);
-  } else {
-    intervals.push(FuyoFuyoRange);
-  }
-}
+//   let left = videoFrames;
+//   while (left > FuyoFuyoInterval) {
+//     frames.push(frames[frames.length - 1] + FuyoFuyoInterval);
+//     left -= FuyoFuyoInterval;
 
-function getFuyoFuyoFrames(videoFrames: number, isReimu?: boolean) {
-  const frames: number[] = [isReimu ? 0 : FuyoFuyoInterval / 2];
-  const intervals: number[] = [FuyoFuyoRange];
+//     addFuyoFuyoRange(intervals);
+//   }
 
-  let left = videoFrames;
-  while (left > FuyoFuyoInterval) {
-    frames.push(frames[frames.length - 1] + FuyoFuyoInterval);
-    left -= FuyoFuyoInterval;
+//   if (left > 0) {
+//     frames.push(frames[frames.length - 1] + left);
+//     addFuyoFuyoRange(intervals);
+//   }
 
-    addFuyoFuyoRange(intervals);
-  }
+//   return [frames, intervals];
+// }
 
-  if (left > 0) {
-    frames.push(frames[frames.length - 1] + left);
-    addFuyoFuyoRange(intervals);
-  }
-
-  return [frames, intervals];
-}
-
-export const YukkuriFace: React.FC<ReimuProps> = ({
-  face,
-  sizePx,
-  isReimu,
-  mouth,
+export const YukkuriFace: React.FC<CharacterProps> = ({
+  isTalking,
 }) => {
-  const imageDirectory = useMemo(
-    () => (isReimu ? 'reimu' : 'marisa'),
-    [isReimu]
-  );
-
   const frame = useCurrentFrame();
   const video = useVideoConfig();
 
-  const [frames, intervals] = useMemo(
-    () => getFuyoFuyoFrames(video.durationInFrames, isReimu),
-    [video]
-  );
+  // ふわふわアニメーション関連のuseMemoとinterpolateを削除
+  // const [frames, intervals] = useMemo(
+  //   () => getFuyoFuyoFrames(video.durationInFrames),
+  //   [video]
+  // );
 
-  const translateY = interpolate(frame, frames, intervals, {
-    easing: Easing.bezier(0.51, 0, 0.49, 1),
-  });
+  // const translateY = interpolate(frame, frames, intervals, {
+  //   easing: Easing.bezier(0.51, 0, 0.49, 1),
+  // });
 
-  return (
-    <div style={{transform: `translateY(${translateY}%)`}}>
-      <Face
-        face={face}
-        sizePx={sizePx}
-        imageDirectory={imageDirectory}
-        isReimu={isReimu}
-        mouth={mouth}
-      />
-    </div>
-  );
-};
-
-const eyeImage: {[key in string]: string} = {
-  default: '05',
-  nikkori: '06',
-  wink: '07',
-  ryomeWink: '08',
-  kyomu: '09',
-  mangaNikkori: '10',
-  shonbori: '11',
-  kirakira: '12',
-  angry: '13',
-  pokan: '14',
-  ryomeNikkori: '15',
-  komari: '16',
-  komariKatame: '17',
-  hokkori: '18',
-  karukuhiiteru: '19',
-  zitome: '20',
-  ryomeTojiIkari: '21',
-  uruuru: '22',
-  namida: '23',
-  shorime: '24',
-  massao: '26',
-  huteki: '27',
-  donbiki: '28',
-  saranidonbiki: '29',
-  daradaraAse: '30',
-} as const;
-
-const defaultMouth: {[key in keyof typeof eyeImage]: string} = {
-  default: '05',
-  nikkori: '06',
-  wink: '07',
-  ryomeWink: '08',
-  kyomu: '09',
-  mangaNikkori: '10',
-  shonbori: '11',
-  kirakira: '12',
-  angry: '13',
-  pokan: '14',
-  ryomeNikkori: '15',
-  komari: '16',
-  komariKatame: '17',
-  hokkori: '18',
-  karukuhiiteru: '19',
-  zitome: '20',
-  ryomeTojiIkari: '21',
-  uruuru: '22',
-  namida: '23',
-  shorime: '24',
-  massao: '26',
-  huteki: '27',
-  donbiki: '28',
-  saranidonbiki: '29',
-  daradaraAse: '30',
-};
-
-const MABATAKI_INTERVAL_SECONDS = 7;
-const MABATAKI_ANIMATION_INTERVAL_FRAME = 1;
-
-export const Face = (props: {
-  face?: string;
-  mouth?: string;
-  sizePx?: number;
-  isReimu?: boolean;
-  imageDirectory: string;
-}) => {
-  const {face, mouth, sizePx, isReimu, imageDirectory} = props;
-
-  // Multiply by 1.2 because Marisa is bit smaller compared to Reimu
-  const faceSizePx =
-    (sizePx ? sizePx : DEFAULT_REIMU_SIZE_PX) * (isReimu ? 1.0 : 1.2);
-
-  const [eyeImagePath, setEyeImagePath] = useState<string | null>(null);
-
-  const frame = useCurrentFrame();
+  const [eyeState, setEyeState] = useState<string>('00'); // 通常の目から開始
+  const [isMouthOpen, setIsMouthOpen] = useState<boolean>(false); // 口パクの状態を追加
 
   useEffect(() => {
-    const frameLeft = frame % (MABATAKI_INTERVAL_SECONDS * FPS);
+    const blinkIntervalFrames = MABATAKI_INTERVAL_SECONDS * FPS;
+    const animationFrames = MABATAKI_ANIMATION_FRAMES;
 
-    if (frameLeft === Number(MABATAKI_ANIMATION_INTERVAL_FRAME)) {
-      setEyeImagePath('04');
-    } else if (frameLeft === MABATAKI_ANIMATION_INTERVAL_FRAME * 2) {
-      setEyeImagePath('03');
-    } else if (frameLeft === MABATAKI_ANIMATION_INTERVAL_FRAME * 3) {
-      setEyeImagePath('02');
-    } else if (frameLeft === MABATAKI_ANIMATION_INTERVAL_FRAME * 4) {
-      setEyeImagePath('01');
-    } else if (frameLeft === MABATAKI_ANIMATION_INTERVAL_FRAME * 5) {
-      setEyeImagePath('00');
-    } else if (frameLeft === MABATAKI_ANIMATION_INTERVAL_FRAME * 6) {
-      setEyeImagePath('01');
-    } else if (frameLeft === MABATAKI_ANIMATION_INTERVAL_FRAME * 7) {
-      setEyeImagePath('02');
-    } else if (frameLeft === MABATAKI_ANIMATION_INTERVAL_FRAME * 8) {
-      setEyeImagePath('03');
-    } else if (frameLeft === MABATAKI_ANIMATION_INTERVAL_FRAME * 9) {
-      setEyeImagePath('04');
-    } else if (
-      eyeImagePath !== null &&
-      frameLeft > MABATAKI_ANIMATION_INTERVAL_FRAME * 9
-    ) {
-      setEyeImagePath(null);
+    const frameInInterval = frame % blinkIntervalFrames;
+
+    if (frameInInterval < animationFrames[0]) {
+      setEyeState('00'); // 通常
+    } else if (frameInInterval >= animationFrames[0] && frameInInterval < animationFrames[1]) {
+      setEyeState('01'); // 少し閉じる
+    } else if (frameInInterval >= animationFrames[1] && frameInInterval < animationFrames[2]) {
+      setEyeState('02'); // 完全に閉じる
+    } else if (frameInInterval >= animationFrames[2] && frameInInterval < animationFrames[3]) {
+      setEyeState('01'); // 少し閉じるに戻る
+    } else {
+      setEyeState('00'); // 通常に戻る
     }
-  }, [frame, eyeImagePath]);
 
-  const eyeImageStr = useMemo(
-    () =>
-      isReimu
-        ? eyeImage[ReimuFaceByFrame[frame]]
-        : eyeImage[MarisaFaceByFrame[frame]],
-    [frame]
-  );
+    // 口パクのロジックを追加
+    if (isTalking) {
+      const mouthCycleLength = 6; // 口パクの1周期の長さ (フレーム数)
+      setIsMouthOpen(frame % mouthCycleLength < mouthCycleLength / 2); // 周期の半分で口を開く
+    } else {
+      setIsMouthOpen(false); // しゃべっていないときは口を閉じる
+    }
+  }, [frame, isTalking]);
 
-  const mouthImageStr = useMemo(
-    () => (isReimu ? ReimuMouthByFrame[frame] : MarisaMouthByFrame[frame]),
-    [frame]
-  );
+  // const charSizePx = sizePx ? sizePx : DEFAULT_CHARACTER_SIZE_PX; // YukkuriSequenceで制御するため削除
 
   return (
-    <MemoizedFace
-      faceSizePx={faceSizePx}
-      imageDirectory={imageDirectory}
-      eyeImage={eyeImageStr === 'default' ? eyeImagePath || '05' : eyeImageStr}
-      mouthImage={mouthImageStr}
-    />
-  );
-};
-
-export const PureFace = (props: {
-  faceSizePx: number;
-  imageDirectory: string;
-  eyeImage: string;
-  mouthImage: string;
-}) => {
-  const {faceSizePx, imageDirectory, eyeImage, mouthImage} = props;
-
-  return (
-    <div
-      style={{
-        ...containerStyle,
-      }}
-    >
+    <div /* style={{transform: `translateY(${translateY}%)`}} */ > {/* transformスタイルを削除 */}
       <Img
-        style={{width: `${faceSizePx}px`}}
-        src={staticFile(`${imageDirectory}/body/00.png`)}
+        src={staticFile(`char/${eyeState}.png`)}
+        style={{width: '100%', height: '100%', objectFit: 'contain'}} // 幅と高さを100%に設定
       />
-      <Img
-        style={{
-          ...faceStyle,
-          width: `${faceSizePx}px`,
-        }}
-        src={staticFile(`${imageDirectory}/eye/${eyeImage}.png`)}
-      />
-      <Img
-        style={{
-          ...faceStyle,
-          width: `${faceSizePx}px`,
-        }}
-        src={staticFile(`${imageDirectory}/mouth/${mouthImage}.png`)}
-      />
+      {isTalking && isMouthOpen && ( // isMouthOpenも条件に追加
+        <Img
+          src={staticFile('char/mouth/01.png')}
+          style={mouthStyle}
+        />
+      )}
     </div>
   );
 };
 
-const MemoizedFace = memo(PureFace, (prevProps, nextProps) => {
-  return (
-    prevProps.eyeImage === nextProps.eyeImage &&
-    prevProps.mouthImage === nextProps.mouthImage
-  );
-});
+const MABATAKI_INTERVAL_SECONDS = 5; // まばたきの間隔 (秒)
+const MABATAKI_ANIMATION_DURATION_FRAMES = 15; // まばたきアニメーションの総フレーム数
 
-const containerStyle: React.CSSProperties = {
-  position: 'relative',
-  zIndex: zIndex.yukkuri,
-};
+// 各状態に切り替わるフレームの閾値
+const MABATAKI_ANIMATION_FRAMES = [
+  0.2 * MABATAKI_ANIMATION_DURATION_FRAMES, // 01.png に切り替わるタイミング
+  0.4 * MABATAKI_ANIMATION_DURATION_FRAMES, // 02.png に切り替わるタイミング
+  0.6 * MABATAKI_ANIMATION_DURATION_FRAMES, // 01.png に戻るタイミング
+  0.8 * MABATAKI_ANIMATION_DURATION_FRAMES, // 00.png に戻るタイミング
+];
 
-const faceStyle: React.CSSProperties = {
+const mouthStyle: React.CSSProperties = {
   position: 'absolute',
-  left: '0',
-  zIndex: zIndex.yukkuri,
+  top: '63.3%', // 調整が必要な場合は変更してください
+  left: '50%', // 調整が必要な場合は変更してください
+  width: '100%', // 調整が必要な場合は変更してください
+  height: 'auto',
+  transform: 'translate(-50%, -50%)',
+  zIndex: zIndex.yukkuri + 1, // キャラクター本体より前面に表示
 };
