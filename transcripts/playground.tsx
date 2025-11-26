@@ -56,7 +56,7 @@ export const PlaygroundConfig: VideoConfig = {
       "talks": [
         {
           "text": "これは新しい構成のテストになるようなことをテストしてみただぜになるようなことをテストしてみただぜ",
-          "id": "98106ebbce384d60bb62ed3878f09d7a",
+          "id": "9ae3d600f2fa451eb303d1f9314a6d43",
           "audioDurationFrames": 217,
           "image": {
             "src": "/slides/slide_0.png"
@@ -64,7 +64,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "スライド番号を指定して画像を切り替えられるんだ",
-          "id": "f75c788f79cb4ff19221c8d1ffc4059a",
+          "id": "c0f5f1ec1a884c259ea3b076389e316a",
           "audioDurationFrames": 115,
           "image": {
             "src": "/slides/slide_1.png"
@@ -72,7 +72,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "SEも再生できるぞ",
-          "id": "d60c886c57c14154ad0f2023cc2504e4",
+          "id": "12a5c293802c4293a4f6a2a4071b543f",
           "audioDurationFrames": 65,
           "image": {
             "src": "/slides/slide_2.png"
