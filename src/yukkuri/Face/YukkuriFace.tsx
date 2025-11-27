@@ -128,7 +128,7 @@ const MABATAKI_ANIMATION_FRAMES = [
 
 const mouthStyle: React.CSSProperties = {
   position: 'absolute',
-  top: '63.3%', // 調整が必要な場合は変更してください
+  top: '49.6%', // 調整が必要な場合は変更してください
   left: '50%', // 調整が必要な場合は変更してください
   width: '100%', // 調整が必要な場合は変更してください
   height: 'auto',

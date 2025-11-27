@@ -30,9 +30,10 @@ export const YukkuriVideo: React.FC<{
           <React.Fragment key={index}>
             <Sequence
               from={cumulateFrames}
-              durationInFrames={
+              durationInFrames={Math.max(
+                1,
                 section.totalFrames - (section.afterMovieFrames || 0)
-              }
+              )}
             >
               {section.bgmSrc && (
                 // @ts-ignore
