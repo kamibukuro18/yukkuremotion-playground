@@ -1,8 +1,25 @@
-Remotion で作るゆっくり実況
+/// <summary>
+/// Remotionで作成するゆっくり実況動画プロジェクト
+/// </summary>
 
-## Commands
+このプロジェクトは、RemotionフレームワークとVoicevoxを使用して、テキストデータからゆっくり実況動画を生成することを目的としています。ユーザーはスクリプトを記述し、キャラクターアニメーション（まばたき、口パク）、BGM、効果音、スライド画像を組み合わせて、リッチな動画コンテンツを簡単に作成できます。
 
-**依存関係のインストール**
+## 目的
+
+*   プログラミングによる動画制作の効率化。
+*   テキストベースの入力から高品質なゆっくり実況動画を自動生成。
+*   カスタマイズ可能なキャラクターアニメーションとUI要素の提供。
+*   Remotion v4への対応と、モダンな開発環境の維持。
+
+## 用途
+
+*   YouTubeなどの動画プラットフォーム向けに、技術解説、ゲーム実況、ニュース解説などのゆっくり実況動画を制作。
+*   プレゼンテーション資料を動画形式で表現。
+*   物語やシナリオをキャラクターと音声で表現するコンテンツ作成。
+
+## 使い方
+
+### 1. 依存関係のインストール
 
 初めてプロジェクトを開始する際や、新しい依存関係が追加された場合は、以下のコマンドを実行して必要なパッケージをインストールしてください。
 
@@ -10,55 +27,13 @@ Remotion で作るゆっくり実況
 npm i
 ```
 
-**プレビューの開始**
+### 2. Voicevoxエンジンの起動
 
-Remotionのプレビューサーバーを起動し、ブラウザで動画をリアルタイムで確認します。
+ゆっくり音声を生成するためには、Voicevoxエンジンをローカルで起動しておく必要があります。Voicevoxアプリケーションを起動し、音声合成サーバーを有効にしてください。
 
-```console
-npm start
-```
+### 3. ゆっくり音声ファイルの生成
 
-**動画のレンダリング**
-
-最終的な動画ファイルを生成するには、以下のコマンドを実行します。
-
-```console
-npm run build
-```
-
-**Remotionのアップグレード (Remotion v4への移行)**
-
-Remotionをv3からv4へアップグレードする際は、以下の手順に従ってください。
-**重要:** このアップグレードには破壊的変更が含まれる可能性があるため、必ず新しいGitブランチで作業を開始してください。
-
-1.  新しいブランチを作成します:
-    ```console
-    git checkout -b feature/remotion-v4-upgrade
-    ```
-2.  既存の依存関係とキャッシュをクリーンアップします。これにより、以前のバージョンが残ることを防ぎます。
-    ```console
-    Remove-Item -Recurse -Force node_modules
-    del package-lock.json
-    ```
-3.  `remotion.config.ts` ファイルを以下の通り修正します。Remotion v4では設定の記述方法が変更されています。
-    *   `import {Config} from "remotion";` を `import {Config} from "@remotion/cli/config";` に変更。
-    *   `Config.Rendering.setImageFormat('jpeg');` を `Config.setVideoImageFormat('jpeg');` に変更。
-    *   `Config.Output.setOverwriteOutput(true);` を `Config.setOverwriteOutput(true);` に変更。
-    *   `Config.Bundling.setEsbuildOverrideOptions(...)` の呼び出しを `Config.setEsbuildOverrideOptions(...)` に変更。
-4.  `tsconfig.json` ファイルを修正します。`compilerOptions` セクションに `"moduleResolution": "node"` を追加（または既存の設定を `"bundler"` から変更）します。これは `ts-node` とRemotion CLIの両方でTypeScriptモジュールを正しく解決するために必要です。
-5.  依存関係を再インストールします。クリーンアップ後に再度全てのパッケージをインストールします。
-    ```console
-    npm install
-    ```
-6.  Remotionをアップグレードします:
-    ```console
-    npm run upgrade
-    ```
-7.  Remotionプレビュー (`npm start`) と音声生成スクリプト (`npm run gen-voice`) が正常に動作することを確認します。問題が解決しない場合は、ブラウザのコンソールやターミナルのエラーメッセージを確認してください。
-
-**ゆっくり音声ファイルの生成**
-
-テキストデータからゆっくり音声ファイルを生成するには、以下のコマンドを実行します。
+`transcripts/playground.tsx` ファイルに記述されたテキストデータに基づいて、ゆっくり音声ファイルを生成します。
 
 ```console
 npm run gen-voice
@@ -70,21 +45,21 @@ npm run gen-voice
 npm run gen-voice:watch
 ```
 
-## Docs
+### 4. プレビューの開始
 
-Get started with Remotion by reading the [fundamentals page](https://www.remotion.dev/docs/the-fundamentals).
+Remotionのプレビューサーバーを起動し、ブラウザで動画をリアルタイムで確認します。
 
-## Help
+```console
+npm start
+```
 
-We provide help [on our Discord server](https://discord.gg/6VzzNDwUwV).
+### 5. 動画のレンダリング
 
-## Issues
+最終的な動画ファイルを生成するには、以下のコマンドを実行します。
 
-Found an issue with Remotion? [File an issue here](https://github.com/remotion-dev/remotion/issues/new).
-
-## License
-
-Notice that for some entities a company license is needed. Read [the terms here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md).
+```console
+npm run build
+```
 
 ## 設定値のリファクタリングガイド
 
@@ -96,43 +71,79 @@ Notice that for some entities a company license is needed. Read [the terms here]
 
 このファイルは、動画全体の挙動や表示に関する基本的な定数を定義しています。
 
-*   **`FPS` (Number)**
+*   **`fps` (Number)**
     *   **説明**: 1秒あたりのフレーム数。動画の滑らかさに影響します。
     *   **影響**:
         *   動画全体の再生速度。
         *   アニメーションの速度（例: まばたき、口パク）。
     *   **調整箇所**: `src/constants.ts`
 
-*   **`TALK_GAP_FRAMES` (Number)**
+*   **`talkGapFrames` (Number)**
     *   **説明**: 各セリフ間のデフォルトの間隔（フレーム数）。
     *   **影響**:
         *   セリフとセリフの間の空白時間。
     *   **調整箇所**: `src/constants.ts`
 
-*   **`SUBTITLE_HEIGHT_PX` (Number)**
+*   **`subtitleHeightPx` (Number)**
     *   **説明**: 字幕エリアの高さ（ピクセル）。
     *   **影響**:
         *   字幕背景の高さ。
         *   字幕テキストが配置される領域の高さ。
     *   **調整箇所**: `src/constants.ts`
 
-*   **`DEFAULT_SECTION_INITIAL_DELAY_FRAMES` (Number)**
+*   **`subtitleFontSize` (Number)**
+    *   **説明**: 字幕のフォントサイズ（ピクセル）。
+    *   **影響**:
+        *   字幕テキストの大きさ。
+    *   **調整箇所**: `src/constants.ts`
+
+*   **`subtitleLineHeight` (Number)**
+    *   **説明**: 字幕の行の高さ（line-height）。
+    *   **影響**:
+        *   改行された字幕テキストの行間の広さ。
+    *   **調整箇所**: `src/constants.ts`
+
+*   **`subtitleMaxLength` (Number)**
+    *   **説明**: 字幕の自動改行文字数。全角文字は2文字としてカウントされます。
+    *   **影響**:
+        *   字幕の1行に表示される文字数。
+    *   **調整箇所**: `src/constants.ts`
+
+*   **`defaultSectionInitialDelayFrames` (Number)**
     *   **説明**: 各セクション開始時のデフォルト遅延（フレーム数）。
     *   **影響**:
         *   各セクションの開始前の空白時間。
     *   **調整箇所**: `src/constants.ts`
 
-*   **`DEFAULT_SECTION_END_FRAMES` (Number)**
+*   **`defaultSectionEndFrames` (Number)**
     *   **説明**: 各セクション終了時のデフォルト遅延（フレーム数）。
-    *   **影響**:
+    *   **影響**:\
         *   各セクションの終了後の空白時間。
     *   **調整箇所**: `src/constants.ts`
 
-*   **`CHARACTER_WIDTH_PERCENTAGE` (Number)**
+*   **`characterWidthPercentage` (Number)**
     *   **説明**: キャラクターの画面占有幅の割合（例: 0.15は15%）。
     *   **影響**:
         *   キャラクターの横幅。
     *   **調整箇所**: `src/constants.ts`, `src/yukkuri/Talk/index.tsx` (画像の位置計算に使用)
+
+*   **`mouthCycleLength` (Number)**
+    *   **説明**: 口パクの1周期の長さ（フレーム数）。例: 6フレームなら3フレーム開いて3フレーム閉じる。
+    *   **影響**:
+        *   口が開閉する速度。
+    *   **調整箇所**: `src/constants.ts`
+
+*   **`mabatakiIntervalSeconds` (Number)**
+    *   **説明**: まばたきの間隔（秒）。
+    *   **影響**:
+        *   キャラクターのまばたきの頻度。
+    *   **調整箇所**: `src/constants.ts`
+
+*   **`mabatakiAnimationDurationFrames` (Number)**
+    *   **説明**: まばたきアニメーションの総フレーム数。
+    *   **影響**:
+        *   まばたきアニメーションの長さと滑らかさ。
+    *   **調整箇所**: `src/constants.ts`
 
 *   **`zIndex` (Object)**
     *   **説明**: 各要素の重なり順序。数値が大きいほど手前に表示されます。
@@ -182,51 +193,26 @@ Notice that for some entities a company license is needed. Read [the terms here]
 
 *   **`strokeSubtitleStyle`, `fillSubtitleStyle` (CSSProperties)**
     *   **説明**: 字幕のアウトラインと塗りつぶし部分のスタイル。
-    *   **影響**:
+    *   **影響**:\
         *   アウトラインの色と太さ (`WebkitTextStroke`)。
     *   **調整箇所**: `src/Subtitle/Subtitle.tsx` 内の `strokeSubtitleStyle`, `fillSubtitleStyle` 定数。
 
 ---
 
-### 5. キャラクターフェイスコンポーネント (`src/yukkuri/Face/YukkuriFace.tsx`)
-
-キャラクターの口の見た目とアニメーションを制御します。
-
-*   **`mouthStyle` (CSSProperties)**
-    *   **説明**: 口の画像 (`char/mouth/01.png`) のスタイル。
-    *   **影響**:
-        *   口の縦方向の位置 (`top`)、横方向の位置 (`left`)、幅 (`width`)。
-        *   `transform` プロパティは、`top` と `left` が要素の中心を基準にするためのものです。
-    *   **調整箇所**: `src/yukkuri/Face/YukkuriFace.tsx` 内の `mouthStyle` 定数。
-
-*   **`MABATAKI_INTERVAL_SECONDS`, `MABATAKI_ANIMATION_DURATION_FRAMES`, `MABATAKI_ANIMATION_FRAMES` (Number/Array)**
-    *   **説明**: まばたきアニメーションの間隔と速度。
-    *   **影響**:
-        *   キャラクターのまばたきの頻度とアニメーションの滑らかさ。
-    *   **調整箇所**: `src/yukkuri/Face/YukkuriFace.tsx` 内のこれらの定数。
-
-*   **`mouthCycleLength` (Number)**
-    *   **説明**: 口パクアニメーションの1周期の長さ（フレーム数）。
-    *   **影響**:
-        *   口が開閉する速度。
-    *   **調整箇所**: `src/yukkuri/Face/YukkuriFace.tsx` 内の `useEffect` フック内。
-
----
-
-### 6. Yukkuriシーケンスコンポーネント (`src/yukkuri/YukkuriSequence.tsx`)
+### 5. Yukkuriシーケンスコンポーネント (`src/yukkuri/YukkuriSequence.tsx`)
 
 キャラクター全体の表示位置とサイズを制御します。
 
 *   **`characterStyle` (CSSProperties)**
     *   **説明**: キャラクター画像全体を配置する `div` のスタイル。
-    *   **影響**:
+    *   **影響**: 
         *   キャラクターの画面右端からの位置 (`right`)、画面下部からの位置 (`bottom`)。
         *   キャラクターの幅 (`width`)、高さ (`height`)。
     *   **調整箇所**: `src/yukkuri/YukkuriSequence.tsx` 内の `characterStyle` 定数。
 
 ---
 
-### 7. プレイグラウンド設定 (`transcripts/playground.tsx`)
+### 6. プレイグラウンド設定 (`transcripts/playground.tsx`)
 
 動画のコンテンツ（テキスト、BGM、画像など）を定義します。
 
