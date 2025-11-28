@@ -106,7 +106,7 @@ function getTextHash(text: string): string {
     };
 
     if (talk.videoIndex !== undefined) {
-      const slideImagePath = `/slides/slide_${talk.videoIndex}.png`; // 動的にスライド画像を読み込む
+      const slideImagePath = `/slides/${talk.videoIndex}.png`; // 動的にスライド画像を読み込む (slide_X.png -> X.png)
       voiceConfig.image = { src: slideImagePath };
     }
 

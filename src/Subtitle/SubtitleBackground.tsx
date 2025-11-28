@@ -1,5 +1,5 @@
 import React from 'react';
-import {SUBTITLE_HEIGHT_PX, zIndex} from '../constants';
+import { VIDEO_SETTINGS, zIndex } from '../constants';
 import {Subtitle} from './Subtitle';
 
 export const SubtitleWithBackground = (props: {
@@ -13,7 +13,7 @@ export const SubtitleWithBackground = (props: {
 const jimakuBackground: React.CSSProperties = {
   position: 'absolute',
   width: '100%',
-  height: `${SUBTITLE_HEIGHT_PX}px`,
+  height: `${VIDEO_SETTINGS.subtitleHeightPx}px`,
   bottom: 0,
   display: 'flex',
   alignItems: 'center',

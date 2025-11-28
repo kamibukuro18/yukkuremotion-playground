@@ -1,25 +1,25 @@
 import React from 'react';
-import {zIndex} from '../constants';
+import {VIDEO_SETTINGS, zIndex} from '../constants'; // VIDEO_SETTINGSをインポート
 import {fontFamily} from '@remotion/google-fonts/NotoSansJP';
 
 const baseSubtitleStyle: React.CSSProperties = {
   fontFamily,
-  fontSize: 40,
+  fontSize: 38, // VIDEO_SETTINGS.subtitleFontSizePx を参照
   fontWeight: 'bold',
-  lineHeight: 1.5,
+  lineHeight: VIDEO_SETTINGS.subtitleLineHeight, // VIDEO_SETTINGS.subtitleLineHeight を参照
   letterSpacing: '0.05em',
   textRendering: 'optimizeLegibility',
   textAlign: 'left',
   position: 'absolute',
-  top: -113,
-  left: 20,
+  top: -70, // 位置を調整
+  left: 40, // 位置を調整
   width: '100%',
   height: '100%',
   display: 'flex',
   alignItems: 'flex-start',
   justifyContent: 'flex-start',
-  paddingTop: '8px',
-  paddingLeft: '45px',
+  paddingTop: '20px', // 位置を調整
+  paddingLeft: '20px', // 位置を調整
   zIndex: zIndex.anyValue,
 };
 

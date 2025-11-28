@@ -1,6 +1,6 @@
 import { Audio, Img, OffthreadVideo, Sequence, staticFile } from 'remotion';
 import { CustomObjects } from '../../../transcripts/CustomObjects';
-import { CHARACTER_WIDTH_PERCENTAGE, SUBTITLE_HEIGHT_PX, TALK_GAP_FRAMES } from '../../constants';
+import { VIDEO_SETTINGS } from '../../constants'; // VIDEO_SETTINGSをインポート
 import { SubtitleWithBackground } from '../../Subtitle/SubtitleBackground';
 import { VoiceConfig } from '../yukkuriVideoConfig';
 import { insertLineBreaks } from '../../utils/textUtils';
@@ -16,7 +16,7 @@ export type TalkProps = {
 
 const getDurationInFrames = (voiceConfig: VoiceConfig) =>
   voiceConfig.customDuration ||
-  voiceConfig.audioDurationFrames + TALK_GAP_FRAMES;
+  voiceConfig.audioDurationFrames + VIDEO_SETTINGS.talkGapFrames; // VIDEO_SETTINGS.talkGapFrames を参照
 
 const getBackgroundVideoDuration = (
   currentTalk: VoiceConfig,
@@ -151,10 +151,10 @@ const HORIZONTAL_PADDING_PX = 40;
 
 const imagePosition: React.CSSProperties = {
   position: 'absolute',
-  height: `calc(100% - ${SUBTITLE_HEIGHT_PX}px - ${VERTICAL_PADDING_PX * 2}px)`,
+  height: `calc(100% - ${VIDEO_SETTINGS.subtitleHeightPx}px - ${VERTICAL_PADDING_PX * 2}px)`, // VIDEO_SETTINGS.subtitleHeightPx を参照
   top: VERTICAL_PADDING_PX,
   left: HORIZONTAL_PADDING_PX,
-  width: `calc(${100 - CHARACTER_WIDTH_PERCENTAGE * 100}% - ${HORIZONTAL_PADDING_PX * 2}px)`,
+  width: `calc(${100 - VIDEO_SETTINGS.characterWidthPercentage * 100}% - ${HORIZONTAL_PADDING_PX * 2}px)`, // VIDEO_SETTINGS.characterWidthPercentage を参照
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',

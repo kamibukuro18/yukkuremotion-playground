@@ -5,7 +5,7 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from 'remotion';
-import {FPS, zIndex} from '../../constants';
+import {VIDEO_SETTINGS, zIndex} from '../../constants'; // FPS, MABATAKI_INTERVAL_SECONDSなどを削除し、VIDEO_SETTINGSをインポート
 
 export type CharacterProps = {
   isTalking?: boolean; // isTalkingプロパティを追加
@@ -71,7 +71,7 @@ export const YukkuriFace: React.FC<CharacterProps> = ({
   const [isMouthOpen, setIsMouthOpen] = useState<boolean>(false); // 口パクの状態を追加
 
   useEffect(() => {
-    const blinkIntervalFrames = MABATAKI_INTERVAL_SECONDS * FPS;
+    const blinkIntervalFrames = MABATAKI_INTERVAL_SECONDS * video.fps;
     const animationFrames = MABATAKI_ANIMATION_FRAMES;
 
     const frameInInterval = frame % blinkIntervalFrames;
@@ -115,8 +115,8 @@ export const YukkuriFace: React.FC<CharacterProps> = ({
   );
 };
 
-const MABATAKI_INTERVAL_SECONDS = 5; // まばたきの間隔 (秒)
-const MABATAKI_ANIMATION_DURATION_FRAMES = 15; // まばたきアニメーションの総フレーム数
+const MABATAKI_INTERVAL_SECONDS = VIDEO_SETTINGS.mabatakiIntervalSeconds; // VIDEO_SETTINGS.mabatakiIntervalSeconds を参照
+const MABATAKI_ANIMATION_DURATION_FRAMES = VIDEO_SETTINGS.mabatakiAnimationDurationFrames; // VIDEO_SETTINGS.mabatakiAnimationDurationFrames を参照
 
 // 各状態に切り替わるフレームの閾値
 const MABATAKI_ANIMATION_FRAMES = [

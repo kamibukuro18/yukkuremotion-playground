@@ -3,7 +3,7 @@ import {AbsoluteFill} from 'remotion';
 import {TalkSequence} from './yukkuri/Talk/TalkSequence';
 import {YukkuriSequence} from './yukkuri/YukkuriSequence';
 import React from 'react';
-import {SUBTITLE_HEIGHT_PX, zIndex} from './constants';
+import {VIDEO_SETTINGS, zIndex} from './constants';
 import {VideoConfig} from './yukkuri/yukkuriVideoConfig';
 import {getTotalFramesBeforeSection} from './utils/getTotalFramesBeforeSection';
 import {LoopedOffthreadVideo} from './components/LoopedOffthreadVideo';
@@ -116,7 +116,7 @@ export const YukkuriVideo: React.FC<{
 const jimakuBackground: React.CSSProperties = {
   position: 'absolute',
   width: 'calc(75%)',
-  height: `130px`,
+  height: `${VIDEO_SETTINGS.subtitleHeightPx}px`,
   bottom: 20,
   left: 40,
   backgroundImage: `url(${staticFile('image/Cyber_telop2_black.png')})`,
