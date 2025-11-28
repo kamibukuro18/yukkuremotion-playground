@@ -208,7 +208,7 @@ export const PlaygroundConfig: VideoConfig = {
     {
       "title": "Playground",
       "bgmSrc": "/audio/bgm/2_23_AM_2.mp3",
-      "bgmVolume": 0.1,
+      "bgmVolume": 0.05,
       "fromFramesMap": {
         "0": 30,
         "1": 257,
@@ -248,7 +248,7 @@ export const PlaygroundConfig: VideoConfig = {
       "talks": [
         {
           "text": "みなさんこんにちは。今回は「ニューラルネットワークの仕組み」をわかりやすく解説します。",
-          "id": "4e8e7b53c61f49d984bba096d651d629",
+          "id": "2d2605002bb54f45ae61674141f1d045",
           "audioDurationFrames": 218,
           "image": {
             "src": "/slides/0.png"
@@ -256,7 +256,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "これまでAIに触れてきた人も、ここで一度基礎から整理しておくと理解が一気に深まります。",
-          "id": "8da10a798b2e46ec87c62156d428f61c",
+          "id": "b2d20f71352440b3836e3a4011b57b43",
           "audioDurationFrames": 214,
           "image": {
             "src": "/slides/0.png"
@@ -264,7 +264,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "まずは全体像から確認していきましょう。",
-          "id": "2707b183c4f54c31a043a7380e7baa15",
+          "id": "07ffff8ec9f645a581a69e925a6cc7f4",
           "audioDurationFrames": 99,
           "image": {
             "src": "/slides/1.png"
@@ -272,7 +272,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "今日のポイントは次の3つです。",
-          "id": "306109474fde40aeb599ce1bff442581",
+          "id": "b6a2fa64ebf24ed3870fc9d7f7cba0ba",
           "audioDurationFrames": 75,
           "image": {
             "src": "/slides/2.png"
@@ -280,7 +280,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "第一に、ニューラルネットワークとは何かを理解すること。",
-          "id": "8af0bb45e88448c494e616d1e8d7f69e",
+          "id": "147871d15a4047018f3a7078fbf4cd43",
           "audioDurationFrames": 140,
           "image": {
             "src": "/slides/2.png"
@@ -288,7 +288,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "第二に、構造とプロセスを図で把握すること。",
-          "id": "8b403a591ae041c3b64900685ec01714",
+          "id": "c8ee04e509f840be9bc2585b0a1dbb28",
           "audioDurationFrames": 118,
           "image": {
             "src": "/slides/2.png"
@@ -296,7 +296,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "第三に、実際のアプリ画面のスクリーンショットで具体例を見ることです。",
-          "id": "0787448adcd741ceb62a7e7a2b605328",
+          "id": "a13125918c5341568e8eda67bc69e12a",
           "audioDurationFrames": 174,
           "image": {
             "src": "/slides/2.png"
@@ -304,7 +304,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "では最初のパートに進みましょう。",
-          "id": "5bf83a0ff1e34177a0410193137b444a",
+          "id": "34037b73df3f4787bcc36142f03a59f1",
           "audioDurationFrames": 77,
           "image": {
             "src": "/slides/3.png"
@@ -312,7 +312,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "ニューラルネットワークとは、データの特徴を学習して結果を予測するための仕組みです。",
-          "id": "5f3709d825d34d379be4ea824e76b1b3",
+          "id": "8aaef88eb115400684c3a4995c3bc62d",
           "audioDurationFrames": 196,
           "image": {
             "src": "/slides/4.png"
@@ -320,7 +320,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "人間の脳の構造をヒントにして作られているという点が特徴です。",
-          "id": "e3c7a80568bb4eeeace2fda6b9d28778",
+          "id": "513e9ab306164544a4b1c4e1a1e4bff0",
           "audioDurationFrames": 156,
           "image": {
             "src": "/slides/4.png"
@@ -328,11 +328,11 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "この図を見てください。もっともシンプルなニューラルネットワークの構造を表したイラストです。（1画像のみ）",
-          "id": "79a1b6b6724c4c458352a7a62e7c6d86",
+          "id": "52efb644bf184219aaa06b51244c86b6",
           "audioDurationFrames": 249,
           "seSounds": [
             {
-              "src": "se/和太鼓でドドン.mp3"
+              "src": "/se/和太鼓でドドン.mp3"
             }
           ],
           "image": {
@@ -341,7 +341,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "図の形だけを確認することで全体像がとても理解しやすくなります。",
-          "id": "282cae0daa8e40a1baf37e3e48f2d35d",
+          "id": "d4750259cc1a47cebcb07baf7bb18689",
           "audioDurationFrames": 163,
           "image": {
             "src": "/slides/5.png"
@@ -349,7 +349,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "次に、入力層・隠れ層・出力層の3層構造について説明します。",
-          "id": "e9cac4bde97f406fb3773a59aee0a42f",
+          "id": "b79bb2241c0f47e8a07f0f6418a56686",
           "audioDurationFrames": 209,
           "image": {
             "src": "/slides/6.png"
@@ -357,7 +357,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "この図では各層がどのような役割を持つのかを示しています。（1画像 + 説明つき）",
-          "id": "91cd50b5ed00431aa5c08d8bd971ecbb",
+          "id": "8c2f13c5b73248cdaff0317f1516ed57",
           "audioDurationFrames": 240,
           "image": {
             "src": "/slides/6.png"
@@ -365,7 +365,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "データがどのように流れ、重みが調整されるかを見ることで学習のイメージがつかめます。",
-          "id": "604e94b9f8bb4cc2acb93d29e23c3d35",
+          "id": "7186539c8e804049823e5ff68646dfac",
           "audioDurationFrames": 203,
           "image": {
             "src": "/slides/7.png"
@@ -373,7 +373,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "ニューラルネットワークで重要な役割を持つのが「活性化関数」です。",
-          "id": "09d496a6b6a7439099d6076ebe5f1dbf",
+          "id": "c472d05bf4974542955672576fda02bc",
           "audioDurationFrames": 182,
           "image": {
             "src": "/slides/8.png"
@@ -381,7 +381,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "この図が代表的な例です。「ReLU」と「Sigmoid」を並べて視覚的に比較してみましょう。（2画像のみ）",
-          "id": "2084b819922a4b50b6995de46b0ea0e3",
+          "id": "d222c5b368e340abba72e0f2a61d71a1",
           "audioDurationFrames": 291,
           "image": {
             "src": "/slides/8.png"
@@ -389,7 +389,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "この2つを比較するだけでも、どのように値が変化するのか一目でわかります。",
-          "id": "fcc77744babe40f09c9ae1e5ec1e1d10",
+          "id": "4b0337938b8b4d798674d65445b315fa",
           "audioDurationFrames": 177,
           "image": {
             "src": "/slides/9.png"
@@ -397,7 +397,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "次に、学習プロセスを図で理解しましょう。",
-          "id": "a7d73cb03801473da99f062730189d72",
+          "id": "8ae1579ec4604ae8b9605f0e6a366950",
           "audioDurationFrames": 112,
           "image": {
             "src": "/slides/10.png"
@@ -405,7 +405,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "まず「順伝播」の図を見てください。データが層を通って出力に向かう流れを示しています。",
-          "id": "4200a92d465d4cb3b68e8cb933f9593b",
+          "id": "65772edd3e65421db9369b860b1efc2c",
           "audioDurationFrames": 238,
           "image": {
             "src": "/slides/10.png"
@@ -413,7 +413,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "続いて「逆伝播」の図です。誤差に応じて重みが調整される様子を図解しています。（2画像＋説明文付き）",
-          "id": "fbe8c59bdc1c43f1b274ff02c86d90bd",
+          "id": "e74e6f8316bb45a08e7a887ea147799e",
           "audioDurationFrames": 299,
           "image": {
             "src": "/slides/10.png"
@@ -421,7 +421,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "この2つのプロセスが交互に行われることで、ネットワークが賢くなっていきます。",
-          "id": "bce6e42225ee427b967e27cc189b06ab",
+          "id": "8318a1cd5a144c5791b671acd1d4ee10",
           "audioDurationFrames": 192,
           "image": {
             "src": "/slides/11.png"
@@ -429,7 +429,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "次に、こちらが実際のAI画像生成アプリの画面です。（スクリーンショット単体）",
-          "id": "2193ff3fe90e40a8bd26acbcf6cf0acc",
+          "id": "12ad65afd09a48e48094ebf08f037042",
           "audioDurationFrames": 212,
           "image": {
             "src": "/slides/12.png"
@@ -437,7 +437,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "どのようにプロンプトを入力するのかが簡単にわかります。",
-          "id": "91a5af0d332348d9b5026f7073d06d34",
+          "id": "f9fb1e7c1456460b995db0c72e84792a",
           "audioDurationFrames": 132,
           "image": {
             "src": "/slides/12.png"
@@ -445,7 +445,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "さらに詳しく見ていきましょう。",
-          "id": "aa31e7b4ceca4d4a9aedc4c388210ca0",
+          "id": "be34968ce14b4f1b9b74fb5419aee4eb",
           "audioDurationFrames": 68,
           "image": {
             "src": "/slides/13.png"
@@ -453,7 +453,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "こちらは同じアプリの設定画面です。（スクリーンショット＋説明付き）",
-          "id": "59802fd6412144068d1640345a36c0c8",
+          "id": "ee452beea76c43888f0af7a6e2b3a49a",
           "audioDurationFrames": 170,
           "image": {
             "src": "/slides/14.png"
@@ -461,7 +461,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "画像サイズやスタイルを変更できる UI があり、これらの設定は最終的な結果に大きく影響します。",
-          "id": "c953da8fe89143f1a58aa02f4488e90d",
+          "id": "218a5f79a1c94d1f9cbbe2432b938f7f",
           "audioDurationFrames": 289,
           "image": {
             "src": "/slides/14.png"
@@ -469,7 +469,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "実際の操作画面を見ることで、理論と実践がつながって理解が深まります。",
-          "id": "1cc51a63de9f4343842d47fe4191dc28",
+          "id": "6ac0fcdbcba945f69f8eea4f1c9fb10d",
           "audioDurationFrames": 185,
           "image": {
             "src": "/slides/15.png"
@@ -477,7 +477,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "ここで、ニューラルネットワーク内での計算式の流れを簡単な図（SVG図）で確認してみましょう。",
-          "id": "538bc7730c4a4456b17f3e4f5357987c",
+          "id": "09941567ef7e4dab89118af65b904070",
           "audioDurationFrames": 261,
           "image": {
             "src": "/slides/16.png"
@@ -485,7 +485,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "数式をいきなり読むより、シンプルな図を使うと全体像がつかみやすくなります。",
-          "id": "98e6633e93ad4690a86aa7c7ccc63f66",
+          "id": "e0bf5d134aa549e585b5fffd5f39cfd8",
           "audioDurationFrames": 191,
           "image": {
             "src": "/slides/16.png"
@@ -493,7 +493,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "入力、重み、バイアス、活性化関数の関係をひとまとめにした視覚的なイメージです。",
-          "id": "2ada2148e7c24c7bac98b64c6ce10dde",
+          "id": "6c1155eae9444f19aa26ec3b75406045",
           "audioDurationFrames": 237,
           "image": {
             "src": "/slides/17.png"
@@ -501,7 +501,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "今日は、ニューラルネットワークの基礎から構造、プロセス、そして実際のアプリ例まで幅広く解説しました。",
-          "id": "4593db3d848444afbd3129e2046cc6f2",
+          "id": "540ccc6b57c74c02908cbae3e012a3ed",
           "audioDurationFrames": 264,
           "image": {
             "src": "/slides/18.png"
@@ -509,7 +509,7 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "それぞれの図やスクリーンショットを使うことで、抽象的な概念が具体的に理解できたはずです。",
-          "id": "ed3c1de8f8e24eecbfaa069ef0553cc2",
+          "id": "b93a6065cac246a4bf670572a31c66e4",
           "audioDurationFrames": 223,
           "image": {
             "src": "/slides/18.png"
@@ -517,11 +517,11 @@ export const PlaygroundConfig: VideoConfig = {
         },
         {
           "text": "今後は応用編として、CNNやRNN、トランスフォーマーなどのモデルの違いにも触れていきますのでお楽しみに！",
-          "id": "28f7532c4ea247c3bb104ea7b386704c",
+          "id": "072988bda224450c8c5e50bd497949b3",
           "audioDurationFrames": 286,
           "seSounds": [
             {
-              "src": "se/和太鼓でドドン.mp3"
+              "src": "/se/和太鼓でドドン.mp3"
             }
           ],
           "image": {

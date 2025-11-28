@@ -109,7 +109,7 @@ export const Talk: React.FC<TalkProps> = ({ voiceConfig, from, meta }) => {
         voiceConfig.seSounds.map((se, index) => (
           <Sequence key={index} durationInFrames={Math.max(1, durationInFrames)} from={from || 0}>
             {/* @ts-ignore */}
-            <Audio src={staticFile(se.src)} />
+            <Audio src={staticFile(se.src)} volume={se.volume || 1} />
           </Sequence>
         ))}
 

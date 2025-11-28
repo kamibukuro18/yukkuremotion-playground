@@ -102,7 +102,10 @@ function getTextHash(text: string): string {
       text: talk.text,
       id: audioInfo.id,
       audioDurationFrames: audioInfo.audioDurationFrames,
-      seSounds: talk.seSounds,
+      seSounds: talk.seSounds ? talk.seSounds.map(se => ({
+        ...se,
+        src: se.src.startsWith('/') ? se.src : `/${se.src}`,
+      })) : undefined,
     };
 
     if (talk.videoIndex !== undefined) {
