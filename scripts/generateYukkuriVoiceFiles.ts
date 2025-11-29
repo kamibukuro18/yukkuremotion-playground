@@ -1,10 +1,10 @@
 import * as fs from 'fs';
-import fsExtra from 'fs-extra';
 import crypto from 'crypto';
 
 const forceGenerate = process.argv[2] === 'force';
 
 if (forceGenerate) {
+  const fsExtra = require('fs-extra');
   fsExtra.emptyDirSync('./public/audio/yukkuri');
 }
 
@@ -36,6 +36,20 @@ function getTextHash(text: string): string {
 
   // Generate audio for each talk
   const { generateVoicevoxAudio } = await import('./voicevoxUtils');
+  // スピーカーID参考:
+  // 四国めたん=2
+  // ずんだもん=3
+  // 春日部つむぎ=8
+  // 雨晴はう=10
+  // 波音リツ=11
+  // 玄野武宏=12
+  // 白上虎太郎=13
+  // 青山龍星=14
+  // 冥鳴ひまり=15
+  // 九州そら=16
+  // もち子さん=20
+  // 剣崎雌雄=21
+  // あいえるたん=22
   const SPEAKER_ID = 3; // Zundamon
 
   for (const talk of talks) {
