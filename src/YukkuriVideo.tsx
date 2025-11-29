@@ -1,16 +1,16 @@
-import {Audio, Img, OffthreadVideo, Sequence, staticFile} from 'remotion';
-import {AbsoluteFill} from 'remotion';
-import {TalkSequence} from './yukkuri/Talk/TalkSequence';
-import {YukkuriSequence} from './yukkuri/YukkuriSequence';
+import { Audio, Img, OffthreadVideo, Sequence, staticFile } from 'remotion';
+import { AbsoluteFill } from 'remotion';
+import { TalkSequence } from './yukkuri/Talk/TalkSequence';
+import { YukkuriSequence } from './yukkuri/YukkuriSequence';
 import React from 'react';
-import {VIDEO_SETTINGS, zIndex} from './constants';
-import {VideoConfig} from './yukkuri/yukkuriVideoConfig';
-import {getTotalFramesBeforeSection} from './utils/getTotalFramesBeforeSection';
-import {LoopedOffthreadVideo} from './components/LoopedOffthreadVideo';
+import { VIDEO_SETTINGS, zIndex } from './constants';
+import { VideoConfig } from './yukkuri/yukkuriVideoConfig';
+import { getTotalFramesBeforeSection } from './utils/getTotalFramesBeforeSection';
+import { LoopedOffthreadVideo } from './components/LoopedOffthreadVideo';
 
 export const YukkuriVideo: React.FC<{
   videoConfig: VideoConfig;
-}> = ({videoConfig}) => {
+}> = ({ videoConfig }) => {
   return (
     <AbsoluteFill style={{
       backgroundColor: '#000',
@@ -21,7 +21,7 @@ export const YukkuriVideo: React.FC<{
       {videoConfig.sections.map((section, index) => {
         const cumulateFrames = getTotalFramesBeforeSection(videoConfig, index);
 
-        const fromFrameMap = {...section.fromFramesMap};
+        const fromFrameMap = { ...section.fromFramesMap };
         Object.keys(fromFrameMap).forEach((key) => {
           fromFrameMap[Number(key)] += cumulateFrames;
         });
@@ -78,7 +78,7 @@ export const YukkuriVideo: React.FC<{
                 durationInFrames={fromFrameMap[0]}
               >
                 <OffthreadVideo
-                  style={{zIndex: zIndex.transitionMovie}}
+                  style={{ zIndex: zIndex.transitionMovie }}
                   src={staticFile(section.beforeMovie)}
                 />
               </Sequence>
@@ -94,7 +94,7 @@ export const YukkuriVideo: React.FC<{
                 durationInFrames={section.afterMovieFrames}
               >
                 <OffthreadVideo
-                  style={{zIndex: zIndex.transitionMovie}}
+                  style={{ zIndex: zIndex.transitionMovie }}
                   src={staticFile(section.afterMovie)}
                   volume={section.afterMovieVolume}
                 />
@@ -109,6 +109,11 @@ export const YukkuriVideo: React.FC<{
       </div> */}
 
       <div style={jimakuBackground} />
+
+      {/* VOICEVOXクレジット表記 */}
+      <div style={voicevoxCreditStyle}>
+        VOICEVOX:ずんだもん
+      </div>
     </AbsoluteFill>
   );
 };
@@ -133,4 +138,19 @@ const logoStyle: React.CSSProperties = {
   left: '40px',
   opacity: 0.8,
   zIndex: zIndex.anyValue,
+};
+
+const voicevoxCreditStyle: React.CSSProperties = {
+  position: 'absolute',
+  bottom: 20,
+  right: 20,
+  color: '#fff',
+  fontSize: '20px',
+  fontFamily: 'sans-serif',
+  fontWeight: 'bold',
+  textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)',
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  padding: '8px 12px',
+  borderRadius: '4px',
+  zIndex: zIndex.subtitle + 1,
 };

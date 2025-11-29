@@ -1,9 +1,8 @@
 import React from 'react';
 import {VIDEO_SETTINGS, zIndex} from '../constants'; // VIDEO_SETTINGSをインポート
-import {fontFamily} from '@remotion/google-fonts/NotoSansJP';
 
 const baseSubtitleStyle: React.CSSProperties = {
-  fontFamily,
+  fontFamily: 'sans-serif',
   fontSize: 38, // VIDEO_SETTINGS.subtitleFontSizePx を参照
   fontWeight: 'bold',
   lineHeight: VIDEO_SETTINGS.subtitleLineHeight, // VIDEO_SETTINGS.subtitleLineHeight を参照
